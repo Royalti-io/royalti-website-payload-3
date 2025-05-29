@@ -1,10 +1,10 @@
-// storage-adapter-import-placeholder
+import { gcsStorage } from '@payloadcms/storage-gcs'
 import { postgresAdapter } from '@payloadcms/db-postgres'
 
 import sharp from 'sharp' // sharp-import
-import path from 'path'
+import path from 'node:path'
 import { buildConfig } from 'payload'
-import { fileURLToPath } from 'url'
+import { fileURLToPath } from 'node:url'
 
 import { Categories } from './collections/Categories'
 import { Comments } from './collections/Comments'
@@ -70,7 +70,18 @@ export default buildConfig({
   globals: [Header, Footer],
   plugins: [
     ...plugins,
-    // storage-adapter-placeholder
+    gcsStorage({
+      collections: {
+        media: true,
+      },
+      bucket: process.env.GCS_BUCKET || '',
+      options: {
+        projectId: process.env.GCP_PROJECT_ID || '',
+        credentials: process.env.GCS_SERVICE_ACCOUNT_KEY 
+          ? JSON.parse(process.env.GCS_SERVICE_ACCOUNT_KEY)
+          : undefined,
+      },
+    }),
   ],
   endpoints: [
     {

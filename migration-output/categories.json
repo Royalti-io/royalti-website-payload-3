@@ -1,0 +1,22 @@
+[
+  {
+    "id": "1",
+    "name": "Announcements",
+    "slug": "announcements"
+  },
+  {
+    "id": "2584",
+    "name": "Music &amp;Tech",
+    "slug": "music-tech"
+  },
+  {
+    "id": "2526",
+    "name": "Music Business",
+    "slug": "music-business"
+  },
+  {
+    "id": "2544",
+    "name": "Music News &amp; Trends",
+    "slug": "music-news-trends"
+  }
+]

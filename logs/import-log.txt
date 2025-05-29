@@ -1,0 +1,41 @@
+--- Migration Log Started at 2025-05-29T17:33:37.574Z ---
+
+[2025-05-29T17:33:37.576Z] Starting JSON to PayloadCMS import...
+[2025-05-29T17:33:37.580Z] Initializing PayloadCMS...
+[2025-05-29T17:33:39.511Z] ✅ PayloadCMS initialized successfully
+[2025-05-29T17:33:39.512Z] Importing categories...
+[2025-05-29T17:33:42.331Z] ⏭️  Category already exists: Announcements
+[2025-05-29T17:33:43.219Z] ⏭️  Category already exists: Music &amp;Tech
+[2025-05-29T17:33:44.118Z] ⏭️  Category already exists: Music Business
+[2025-05-29T17:33:45.011Z] ⏭️  Category already exists: Music News &amp; Trends
+[2025-05-29T17:33:45.011Z] Imported 0 categories
+[2025-05-29T17:33:45.012Z] ✅ Category import complete. 4 categories processed.
+[2025-05-29T17:33:45.014Z] Importing users...
+[2025-05-29T17:33:45.897Z] ⏭️  User already exists: Chinedum Okerengwor (Email: chinedum@royalti.io)
+[2025-05-29T17:33:46.810Z] ⏭️  User already exists: Adaugo Ugwu (Email: adaugo@royalti.io)
+[2025-05-29T17:33:47.733Z] ⏭️  User already exists: Isaac Newton Akah (Email: newton@royalti.io)
+[2025-05-29T17:33:48.594Z] ⏭️  User already exists: Oluwatunmise Ife-Abidakun (Email: ife@royalti.io)
+[2025-05-29T17:33:49.468Z] ⏭️  User already exists: ahannah (Email: adejugbagbehannah@gmail.co.uk)
+[2025-05-29T17:33:50.322Z] ⏭️  User already exists: Jasmine (Email: jasmine@royalti.io)
+[2025-05-29T17:33:51.201Z] ⏭️  User already exists: thecharlesisidi (Email: thecharlesisidi@gmail.com)
+[2025-05-29T17:33:52.080Z] ⏭️  User already exists: georgepedicel (Email: georgeazih241@gmail.com)
+[2025-05-29T17:33:52.995Z] ⏭️  User already exists: ellapedicel (Email: ella@pedicelmarketing.com)
+[2025-05-29T17:33:52.996Z] Imported 0 users
+[2025-05-29T17:33:52.996Z] ✅ User import complete. 9 users processed.
+[2025-05-29T17:33:52.997Z] Processing media...
+[2025-05-29T17:33:53.923Z] Downloading: https://royalti.io/wp-content/uploads/2018/02/Letterhead.pdf
+[2025-05-29T17:33:55.122Z] Error processing media item 16442 (URL: https://royalti.io/wp-content/uploads/2018/02/Letterhead.pdf):
+[2025-05-29T17:33:55.123Z]   Axios Error: Request failed with status code 500
+[2025-05-29T17:33:55.123Z]   Status: 500
+[2025-05-29T17:33:55.124Z]   Response Data: {"type":"Buffer","data":[60,33,68,79,67,84,89,80,69,32,72,84,77,76,32,80,85,66,76,73,67,32,34,45,47,47,73,69,84,70,47,47,68,84,68,32,72,84,77,76,32,50,46,48,47,47,69,78,34,62,10,60,104,116,109,108,62,60,104,101,97,100,62,10,60,116,105,116,108,101,62,53,48,48,32,73,110,116,101,114,110,97,108,32,83,101,114,118,101,114,32,69,114,114,111,114,60,47,116,105,116,108,101,62,10,60,47,104,101,97,100,62,60,98,111,100,121,62,10,60,104,49,62,73,110,116,101,114,110,97,108,32,83,101,114,118,101,114,32,69,114,114,111,114,60,47,104,49,62,10,60,112,62,84,104,101,32,115,101,114,118,101,114,32,101,110,99,111,117,110,116,101,114,101,100,32,97,110,32,105,110,116,101,114,110,97,108,32,101,114,114,111,114,32,111,114,10,109,105,115,99,111,110,102,105,103,117,114,97,116,105,111,110,32,97,110,100,32,119,97,115,32,117,110,97,98,108,101,32,116,111,32,99,111,109,112,108,101,116,101,10,121,111,117,114,32,114,101,113,117,101,115,116,46,60,47,112,62,10,60,112,62,80,108,101,97,115,101,32,99,111,110,116,97,99,116,32,116,104,101,32,115,101,114,118,101,114,32,97,100,109,105,110,105,115,116,114,97,116,111,114,32,97,116,32,10,32,119,101,98,109,97,115,116,101,114,64,114,111,121,97,108,116,105,46,105,111,32,116,111,32,105,110,102,111,114,109,32,116,104,101,109,32,111,102,32,116,104,101,32,116,105,109,101,32,116,104,105,115,32,101,114,114,111,114,32,111,99,99,117,114,114,101,100,44,10,32,97,110,100,32,116,104,101,32,97,99,116,105,111,110,115,32,121,111,117,32,112,101,114,102,111,114,109,101,100,32,106,117,115,116,32,98,101,102,111,114,101,32,116,104,105,115,32,101,114,114,111,114,46,60,47,112,62,10,60,112,62,77,111,114,101,32,105,110,102,111,114,109,97,116,105,111,110,32,97,98,111,117,116,32,116,104,105,115,32,101,114,114,111,114,32,109,97,121,32,98,101,32,97,118,97,105,108,97,98,108,101,10,105,110,32,116,104,101,32,115,101,114,118,101,114,32,101,114,114,111,114,32,108,111,103,46,60,47,112,62,10,60,112,62,65,100,100,105,116,105,111,110,97,108,108,121,44,32,97,32,53,48,48,32,73,110,116,101,114,110,97,108,32,83,101,114,118,101,114,32,69,114,114,111,114,10,101,114,114,111,114,32,119,97,115,32,101,110,99,111,117,110,116,101,114,101,100,32,119,104,105,108,101,32,116,114,121,105,110,103,32,116,111,32,117,115,101,32,97,110,32,69,114,114,111,114,68,111,99,117,109,101,110,116,32,116,111,32,104,97,110,100,108,101,32,116,104,101,32,114,101,113,117,101,115,116,46,60,47,112,62,10,60,47,98,111,100,121,62,60,47,104,116,109,108,62,10]}
+[2025-05-29T17:33:56.027Z] Downloading: https://royalti.io/wp-content/uploads/2021/01/royalti.io-logo-head-512.png
+[2025-05-29T17:34:01.320Z] ✅ Successfully imported royalti.io-logo-head-512.png as 342 (Payload) from 53263 (Original WP ID)
+[2025-05-29T17:34:02.243Z] Downloading: https://royalti.io/wp-content/uploads/2021/01/cropped-royalti.io-logo-head-512.png
+[2025-05-29T17:34:06.323Z] ✅ Successfully imported cropped-royalti.io-logo-head-512.png as 343 (Payload) from 53264 (Original WP ID)
+[2025-05-29T17:34:07.217Z] Downloading: https://royalti.io/wp-content/uploads/2016/05/royalti.io-logo-head-57.png
+[2025-05-29T17:34:10.667Z] ✅ Successfully imported royalti.io-logo-head-57.png as 344 (Payload) from 53267 (Original WP ID)
+[2025-05-29T17:34:11.538Z] Downloading: https://royalti.io/wp-content/uploads/2016/05/royalti.io-logo-head-white-57.png
+[2025-05-29T17:34:14.716Z] ✅ Successfully imported royalti.io-logo-head-white-57.png as 345 (Payload) from 53268 (Original WP ID)
+[2025-05-29T17:34:15.627Z] Downloading: https://royalti.io/wp-content/uploads/2016/05/royalti.io-logo-240x60-1.png
+[2025-05-29T17:34:19.309Z] ✅ Successfully imported royalti.io-logo-240x60-1.png as 346 (Payload) from 53271 (Original WP ID)
+[2025-05-29T17:34:20.286Z] Downloading: https://royalti.io/wp-content/uploads/2016/05/royalti.io-logo-white-240x60-1.png
