@@ -9,9 +9,9 @@ import axios from 'axios';
 import mime from 'mime-types';
 import * as cheerio from 'cheerio';
 
-// Define types from the cheerio namespace
-type CheerioElementType = cheerio.Element; // Type for raw DOM elements
-type CheerioAnyNodeType = cheerio.AnyNode;
+// Define types using DOM types that cheerio internally uses
+type CheerioElementType = any; // Using any for Element type as a workaround
+type CheerioAnyNodeType = any; // Using any for AnyNode type as a workaround
 type CheerioCollectionType<T> = cheerio.Cheerio<T>; // Type for a Cheerio collection, e.g. $(...)
 type CheerioAPIType = cheerio.CheerioAPI; // Type for the $ instance itself
 import { Buffer } from 'node:buffer';
