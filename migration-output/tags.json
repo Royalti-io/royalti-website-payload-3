@@ -1,0 +1,527 @@
+[
+  {
+    "id": "2600",
+    "name": "'70s",
+    "slug": "70s"
+  },
+  {
+    "id": "2545",
+    "name": "#BurnaBoy #ToniBraxton #Royalties #Spilts #Royalti #MusicBusiness",
+    "slug": "burnaboy-tonibraxton-royalties-spilts-royalti-musicbusiness"
+  },
+  {
+    "id": "2550",
+    "name": "#concert",
+    "slug": "concert"
+  },
+  {
+    "id": "2548",
+    "name": "#promoter",
+    "slug": "promoter"
+  },
+  {
+    "id": "2551",
+    "name": "#Royalti",
+    "slug": "royalti"
+  },
+  {
+    "id": "2594",
+    "name": "#Spilts",
+    "slug": "spilts"
+  },
+  {
+    "id": "2549",
+    "name": "#tour",
+    "slug": "tour"
+  },
+  {
+    "id": "2626",
+    "name": "2000s",
+    "slug": "2000s"
+  },
+  {
+    "id": "2586",
+    "name": "2024",
+    "slug": "2024"
+  },
+  {
+    "id": "2595",
+    "name": "2025",
+    "slug": "2025"
+  },
+  {
+    "id": "2536",
+    "name": "accounting",
+    "slug": "accounting"
+  },
+  {
+    "id": "2573",
+    "name": "afrobeats",
+    "slug": "afrobeats"
+  },
+  {
+    "id": "2607",
+    "name": "ai",
+    "slug": "ai"
+  },
+  {
+    "id": "2606",
+    "name": "AI in music production",
+    "slug": "ai-in-music-production"
+  },
+  {
+    "id": "2556",
+    "name": "analytics",
+    "slug": "analytics"
+  },
+  {
+    "id": "2582",
+    "name": "artificial intelligence",
+    "slug": "artificial-intelligence"
+  },
+  {
+    "id": "2520",
+    "name": "artist",
+    "slug": "artist"
+  },
+  {
+    "id": "2546",
+    "name": "artist manager",
+    "slug": "artist-manager"
+  },
+  {
+    "id": "2533",
+    "name": "artiste",
+    "slug": "artiste"
+  },
+  {
+    "id": "2547",
+    "name": "Asake",
+    "slug": "asake"
+  },
+  {
+    "id": "2521",
+    "name": "asset",
+    "slug": "asset"
+  },
+  {
+    "id": "2590",
+    "name": "Ayra Starr",
+    "slug": "ayra-starr"
+  },
+  {
+    "id": "2553",
+    "name": "bao",
+    "slug": "bao"
+  },
+  {
+    "id": "2516",
+    "name": "beta",
+    "slug": "beta"
+  },
+  {
+    "id": "2558",
+    "name": "Blockchain",
+    "slug": "blockchain"
+  },
+  {
+    "id": "2541",
+    "name": "burna boy",
+    "slug": "burna-boy"
+  },
+  {
+    "id": "2585",
+    "name": "Catalog management",
+    "slug": "catalog-management"
+  },
+  {
+    "id": "2538",
+    "name": "catalogue management",
+    "slug": "catalogue-management"
+  },
+  {
+    "id": "2506",
+    "name": "cchub",
+    "slug": "cchub"
+  },
+  {
+    "id": "2539",
+    "name": "cesp",
+    "slug": "cesp"
+  },
+  {
+    "id": "2570",
+    "name": "ChatGPT",
+    "slug": "chatgpt"
+  },
+  {
+    "id": "2583",
+    "name": "cloud",
+    "slug": "cloud"
+  },
+  {
+    "id": "2509",
+    "name": "co creation hub",
+    "slug": "co-creation-hub"
+  },
+  {
+    "id": "2571",
+    "name": "collaboration agreement",
+    "slug": "collaboration-agreement"
+  },
+  {
+    "id": "2554",
+    "name": "conference",
+    "slug": "conference"
+  },
+  {
+    "id": "2537",
+    "name": "content administrator",
+    "slug": "content-administrator"
+  },
+  {
+    "id": "2613",
+    "name": "copyrights",
+    "slug": "copyrights"
+  },
+  {
+    "id": "2621",
+    "name": "copyrights in Nigeria",
+    "slug": "copyrights-in-nigeria"
+  },
+  {
+    "id": "2540",
+    "name": "davido",
+    "slug": "davido"
+  },
+  {
+    "id": "2517",
+    "name": "demo",
+    "slug": "demo"
+  },
+  {
+    "id": "2605",
+    "name": "digital distribution",
+    "slug": "digital-distribution"
+  },
+  {
+    "id": "2555",
+    "name": "financial management",
+    "slug": "financial-management"
+  },
+  {
+    "id": "2588",
+    "name": "glossary",
+    "slug": "glossary"
+  },
+  {
+    "id": "2577",
+    "name": "grammys",
+    "slug": "grammys"
+  },
+  {
+    "id": "2611",
+    "name": "immersive tech",
+    "slug": "immersive-tech"
+  },
+  {
+    "id": "2604",
+    "name": "independent artists",
+    "slug": "independent-artists"
+  },
+  {
+    "id": "2614",
+    "name": "intellectual property",
+    "slug": "intellectual-property"
+  },
+  {
+    "id": "2618",
+    "name": "international collaborations",
+    "slug": "international-collaborations"
+  },
+  {
+    "id": "2514",
+    "name": "launch",
+    "slug": "launch"
+  },
+  {
+    "id": "2557",
+    "name": "licensing",
+    "slug": "licensing"
+  },
+  {
+    "id": "2580",
+    "name": "music",
+    "slug": "music"
+  },
+  {
+    "id": "2507",
+    "name": "music &amp; tech space",
+    "slug": "music-tech-space"
+  },
+  {
+    "id": "2527",
+    "name": "music business",
+    "slug": "music-business"
+  },
+  {
+    "id": "2579",
+    "name": "music catalogue",
+    "slug": "music-catalogue"
+  },
+  {
+    "id": "2616",
+    "name": "music collaboration",
+    "slug": "music-collaboration"
+  },
+  {
+    "id": "2578",
+    "name": "music contracts",
+    "slug": "music-contracts"
+  },
+  {
+    "id": "2617",
+    "name": "music feature",
+    "slug": "music-feature"
+  },
+  {
+    "id": "2561",
+    "name": "music licensing",
+    "slug": "music-licensing"
+  },
+  {
+    "id": "2596",
+    "name": "music professionals",
+    "slug": "music-professionals"
+  },
+  {
+    "id": "2559",
+    "name": "music royalties",
+    "slug": "music-royalties"
+  },
+  {
+    "id": "2620",
+    "name": "music royaties",
+    "slug": "music-royaties"
+  },
+  {
+    "id": "2510",
+    "name": "music tech",
+    "slug": "music-tech"
+  },
+  {
+    "id": "2505",
+    "name": "Music Tech Innovation Challenge",
+    "slug": "music-tech-innovation-challenge"
+  },
+  {
+    "id": "2504",
+    "name": "music-tech innovation challenge 2020",
+    "slug": "music-tech-innovation-challenge-2020"
+  },
+  {
+    "id": "2515",
+    "name": "mvp",
+    "slug": "mvp"
+  },
+  {
+    "id": "2622",
+    "name": "Nigeria Music Industry",
+    "slug": "nigeria-music-industry"
+  },
+  {
+    "id": "2602",
+    "name": "Nigerian afrobeat",
+    "slug": "nigerian-afrobeat"
+  },
+  {
+    "id": "2624",
+    "name": "Nigerian artists",
+    "slug": "nigerian-artists"
+  },
+  {
+    "id": "2589",
+    "name": "Nigerian female artist",
+    "slug": "nigerian-female-artist"
+  },
+  {
+    "id": "2619",
+    "name": "Nigerian music",
+    "slug": "nigerian-music"
+  },
+  {
+    "id": "2625",
+    "name": "Nigerian music 2000s",
+    "slug": "nigerian-music-2000s"
+  },
+  {
+    "id": "2601",
+    "name": "Nigerian music history",
+    "slug": "nigerian-music-history"
+  },
+  {
+    "id": "2615",
+    "name": "Nigerian music in the '60s",
+    "slug": "nigerian-music-in-the-60s"
+  },
+  {
+    "id": "2599",
+    "name": "Nigerian music in the '70s",
+    "slug": "nigerian-music-in-the-70s"
+  },
+  {
+    "id": "2609",
+    "name": "nostalgis",
+    "slug": "nostalgis"
+  },
+  {
+    "id": "2610",
+    "name": "older music",
+    "slug": "older-music"
+  },
+  {
+    "id": "2608",
+    "name": "oldies",
+    "slug": "oldies"
+  },
+  {
+    "id": "2508",
+    "name": "paga",
+    "slug": "paga"
+  },
+  {
+    "id": "2534",
+    "name": "pitch",
+    "slug": "pitch"
+  },
+  {
+    "id": "2522",
+    "name": "product",
+    "slug": "product"
+  },
+  {
+    "id": "2529",
+    "name": "record label",
+    "slug": "record-label"
+  },
+  {
+    "id": "2574",
+    "name": "rema",
+    "slug": "rema"
+  },
+  {
+    "id": "2518",
+    "name": "royalti.io",
+    "slug": "royalti-io"
+  },
+  {
+    "id": "2543",
+    "name": "royalties",
+    "slug": "royalties"
+  },
+  {
+    "id": "2528",
+    "name": "royalty",
+    "slug": "royalty"
+  },
+  {
+    "id": "2535",
+    "name": "royalty accounting",
+    "slug": "royalty-accounting"
+  },
+  {
+    "id": "2560",
+    "name": "Royalty management",
+    "slug": "royalty-management"
+  },
+  {
+    "id": "2530",
+    "name": "royalty manager",
+    "slug": "royalty-manager"
+  },
+  {
+    "id": "2597",
+    "name": "Royalty tracking",
+    "slug": "royalty-tracking"
+  },
+  {
+    "id": "2603",
+    "name": "Singles",
+    "slug": "singles"
+  },
+  {
+    "id": "2598",
+    "name": "social media",
+    "slug": "social-media"
+  },
+  {
+    "id": "2581",
+    "name": "songwriting",
+    "slug": "songwriting"
+  },
+  {
+    "id": "2572",
+    "name": "split sheet",
+    "slug": "split-sheet"
+  },
+  {
+    "id": "2593",
+    "name": "spotify",
+    "slug": "spotify"
+  },
+  {
+    "id": "2587",
+    "name": "streaming",
+    "slug": "streaming"
+  },
+  {
+    "id": "2592",
+    "name": "streaming fraud",
+    "slug": "streaming-fraud"
+  },
+  {
+    "id": "2591",
+    "name": "Tems",
+    "slug": "tems"
+  },
+  {
+    "id": "2623",
+    "name": "The Headies 2025",
+    "slug": "the-headies-2025"
+  },
+  {
+    "id": "2627",
+    "name": "TikTok made me famous",
+    "slug": "tiktok-made-me-famous"
+  },
+  {
+    "id": "2576",
+    "name": "tiwa savage",
+    "slug": "tiwa-savage"
+  },
+  {
+    "id": "2575",
+    "name": "tyla",
+    "slug": "tyla"
+  },
+  {
+    "id": "2523",
+    "name": "update",
+    "slug": "update"
+  },
+  {
+    "id": "2519",
+    "name": "updates",
+    "slug": "updates"
+  },
+  {
+    "id": "2612",
+    "name": "virtual reality",
+    "slug": "virtual-reality"
+  },
+  {
+    "id": "2542",
+    "name": "wizkid",
+    "slug": "wizkid"
+  }
+]

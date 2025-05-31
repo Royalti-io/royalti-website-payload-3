@@ -11,25 +11,56 @@ import { fileURLToPath } from 'node:url'
 import { anyone } from '../access/anyone'
 import { authenticated } from '../access/authenticated'
 
-const filename = fileURLToPath(import.meta.url)
-const dirname = path.dirname(filename)
+import { Storage, StorageOptions } from '@google-cloud/storage'
 
-// Hook to organize file uploads by year/month in the file system
-const formatUploadFilename: CollectionBeforeChangeHook = async ({ req, data, operation }) => {
-  if (operation === 'create' && req.file) {
-    const now = new Date();
-    const year = now.getFullYear();
-    const month = (now.getMonth() + 1).toString().padStart(2, '0'); // getMonth() is 0-indexed
-    const datePrefix = `${year}/${month}/`;
 
-    req.file.name = `${datePrefix}${req.file.name}`;
+// Helper function to generate YYYY/MM/ folder structure
+const generateDateFolder = (date: Date = new Date()): string => {
+  const year = date.getFullYear().toString()
+  const month = (date.getMonth() + 1).toString().padStart(2, '0')
+  return `${year}/${month}`
+}
 
-    if (data) {
-      data.filename = req.file.name;
+// Helper function to move files in GCS
+const moveFileInGCS = async (oldPath: string, newPath: string) => {
+  // Initialize Google Cloud Storage client
+  const gcpProjectId = process.env.GCP_PROJECT_ID;
+  const gcsBucketName = process.env.GCS_BUCKET!;
+  const gcsServiceAccountKey = process.env.GCS_SERVICE_ACCOUNT_KEY;
+  
+  const storageOptions: StorageOptions = {
+    projectId: gcpProjectId, // Added trailing comma
+  };
+  
+  if (gcsServiceAccountKey) {
+    try {
+      const serviceAccount = JSON.parse(gcsServiceAccountKey);
+      if (serviceAccount.client_email && serviceAccount.private_key) {
+        storageOptions.credentials = {
+          client_email: serviceAccount.client_email,
+          private_key: serviceAccount.private_key.replace(/\\n/g, '\n'), // Important for newlines in private key
+        };
+        // console.log('Using GCS_SERVICE_ACCOUNT_KEY for GCS authentication.'); // Optional: for debugging
+      }
+    } catch (error) {
+      console.error('Failed to parse GCS_SERVICE_ACCOUNT_KEY:', error);
     }
   }
-  return data;
+  
+  const storage = new Storage(storageOptions);
+  const bucket = storage.bucket(gcsBucketName);
+  try {
+    const file = bucket.file(oldPath);
+    await file.move(bucket.file(newPath));
+    console.log(`Successfully moved GCS file from '${oldPath}' to '${newPath}'.`); // Added trailing comma
+  } catch (error) {
+    console.error(`Error moving GCS file from '${oldPath}' to '${newPath}':`, error);
+    throw error; // Re-throw the error to be caught by the caller
+  }
 };
+
+const filename = fileURLToPath(import.meta.url)
+const dirname = path.dirname(filename)
 
 // Hook to set the default folder to the current year/month folder
 const setDefaultYearMonthFolder: CollectionBeforeValidateHook = async ({ 
@@ -119,40 +150,6 @@ async function findFolderByNameAndParent(payload, name, parentId) {
   return folders?.docs?.[0] || null;
 };
 
-// New hook to preserve paths in filenames from import script
-const preservePathInFilename: CollectionBeforeChangeHook = async ({ req, data, operation }) => {
-  // Ensure 'data' exists, especially for a 'create' operation with a file.
-  if (operation === 'create' && req.file?.name && data) {
-    const desiredFullFilename = req.file.name; // This is the filename from your import script, e.g., "2020/12/image.png"
-
-    if (desiredFullFilename.includes('/')) {
-      // Extract the path prefix, e.g., "2020/12/"
-      const pathPrefix = desiredFullFilename.substring(0, desiredFullFilename.lastIndexOf('/') + 1);
-      
-      // 1. Set the main document's filename.
-      // This ensures the original image is saved with the correct path.
-      data.filename = desiredFullFilename;
-
-      // 2. Adjust filenames for all generated image sizes.
-      // Payload populates `data.sizes` before this hook runs.
-      // `data.sizes[sizeKey].filename` typically contains the size-specific name
-      // (e.g., "image-thumbnail.png") without any path.
-      if (data.sizes) {
-        for (const sizeKey in data.sizes) {
-          const sizeData = data.sizes[sizeKey];
-          // Ensure sizeData and its filename exist and filename is a string
-          if (sizeData && typeof sizeData.filename === 'string') {
-            // Prepend the pathPrefix to the existing size filename.
-            // This makes "image-thumbnail.png" become "2020/12/image-thumbnail.png".
-            sizeData.filename = `${pathPrefix}${sizeData.filename}`;
-          }
-        }
-      }
-    }
-  }
-  return data;
-};
-
 export const Media: CollectionConfig = {
   slug: 'media',
   access: {
@@ -163,6 +160,16 @@ export const Media: CollectionConfig = {
   },
   hooks: {
     beforeValidate: [setDefaultYearMonthFolder],
+    // Store upload date and folder info before saving
+    beforeChange: [
+      async ({ data, req, operation }) => {
+        if (operation === 'create') {
+          const now = new Date()
+          data.uploadDate = now.toISOString()
+        }
+        return data
+      }
+    ],
   },
   admin: {
     folders: true,

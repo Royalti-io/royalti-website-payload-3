@@ -46,10 +46,10 @@ The current migration script has several limitations:
   - [x] Implement upload to PayloadCMS media collection
   - [x] Create proper metadata for each media item (alt text, captions)
 
-- [x] **Content Reference Updates**
-  - [x] Update image references in post/page content
-  - [x] Handle featured images for posts
-  - [x] Update any inline styles or attributes
+- [ ] **Content Reference Updates**
+  - [ ] Update image references in post/page content
+  - [ ] Handle featured images for posts
+  - [ ] Update any inline styles or attributes
 
 ### 3. User and Author Migration
 

@@ -11,6 +11,7 @@
     "categories": [
       "Announcements"
     ],
+    "tags": [],
     "seo": {
       "description": "Learn to get your music distributed in Nigeria this with this quick step guide. %%title%% %%sitename%%"
     }
@@ -27,6 +28,7 @@
     "categories": [
       "Music Business"
     ],
+    "tags": [],
     "seo": {}
   },
   {
@@ -41,6 +43,7 @@
     "categories": [
       "Music Business"
     ],
+    "tags": [],
     "seo": {}
   },
   {
@@ -55,6 +58,7 @@
     "categories": [
       "Music Business"
     ],
+    "tags": [],
     "seo": {}
   },
   {
@@ -67,7 +71,9 @@
     "status": "publish",
     "creator": "nedjamez",
     "categories": [
-      "Announcements",
+      "Announcements"
+    ],
+    "tags": [
       "cchub",
       "co creation hub",
       "music &amp; tech space",
@@ -89,7 +95,9 @@
     "status": "publish",
     "creator": "nedjamez",
     "categories": [
-      "Announcements",
+      "Announcements"
+    ],
+    "tags": [
       "beta",
       "demo",
       "launch",
@@ -109,7 +117,9 @@
     "status": "publish",
     "creator": "nedjamez",
     "categories": [
-      "Announcements",
+      "Announcements"
+    ],
+    "tags": [
       "royalti.io",
       "updates"
     ],
@@ -126,7 +136,9 @@
     "status": "publish",
     "creator": "nedjamez",
     "categories": [
-      "Announcements",
+      "Announcements"
+    ],
+    "tags": [
       "artist",
       "artiste",
       "asset",
@@ -146,7 +158,9 @@
     "status": "publish",
     "creator": "adaugo",
     "categories": [
-      "Music Business",
+      "Music Business"
+    ],
+    "tags": [
       "music business",
       "record label",
       "royalti.io",
@@ -169,7 +183,9 @@
     "status": "publish",
     "creator": "adaugo",
     "categories": [
-      "Music Business",
+      "Music Business"
+    ],
+    "tags": [
       "music business",
       "music tech",
       "record label",
@@ -190,7 +206,9 @@
     "status": "publish",
     "creator": "nedjamez",
     "categories": [
-      "Announcements",
+      "Announcements"
+    ],
+    "tags": [
       "music business",
       "music tech",
       "product",
@@ -211,7 +229,9 @@
     "status": "publish",
     "creator": "nedjamez",
     "categories": [
-      "Announcements",
+      "Announcements"
+    ],
+    "tags": [
       "pitch"
     ],
     "seo": {},
@@ -227,8 +247,10 @@
     "status": "publish",
     "creator": "adaugo",
     "categories": [
+      "Music Business"
+    ],
+    "tags": [
       "accounting",
-      "Music Business",
       "royalty",
       "royalty accounting"
     ],
@@ -249,6 +271,7 @@
     "categories": [
       "Announcements"
     ],
+    "tags": [],
     "seo": {
       "title": "Star Makers Distribution Partners with Royalti.io",
       "description": "Star Makers Distribution, a music distribution company, partners with Royalti.io, a royalty accounting software and music rights manag..."
@@ -265,9 +288,11 @@
     "status": "publish",
     "creator": "adaugo",
     "categories": [
+      "Music Business"
+    ],
+    "tags": [
       "catalogue management",
       "content administrator",
-      "Music Business",
       "record label"
     ],
     "seo": {
@@ -285,7 +310,9 @@
     "status": "publish",
     "creator": "nedjamez",
     "categories": [
-      "Announcements",
+      "Announcements"
+    ],
+    "tags": [
       "cesp"
     ],
     "seo": {},
@@ -301,9 +328,11 @@
     "status": "publish",
     "creator": "newton",
     "categories": [
+      "Music Business"
+    ],
+    "tags": [
       "burna boy",
       "davido",
-      "Music Business",
       "royalties",
       "wizkid"
     ],
@@ -322,8 +351,10 @@
     "status": "publish",
     "creator": "newton",
     "categories": [
-      "#BurnaBoy #ToniBraxton #Royalties #Spilts #Royalti #MusicBusiness",
       "Music News &amp; Trends"
+    ],
+    "tags": [
+      "#BurnaBoy #ToniBraxton #Royalties #Spilts #Royalti #MusicBusiness"
     ],
     "seo": {
       "description": "As far as the royalty agreements on “Last Last” go, Burna Boy's royalties for Toni Braxton and her team do not include Mechanical Royalties."
@@ -342,6 +373,7 @@
     "categories": [
       "Music Business"
     ],
+    "tags": [],
     "seo": {
       "description": "Licensing your music can be a great way to make money from your music while also protecting your copyright."
     },
@@ -359,6 +391,7 @@
     "categories": [
       "Announcements"
     ],
+    "tags": [],
     "seo": {},
     "featuredImageId": "57465"
   },
@@ -374,6 +407,7 @@
     "categories": [
       "Music Business"
     ],
+    "tags": [],
     "seo": {
       "description": "Digital distribution companies ensure that all works distributed through them are accounted for, royalties are analyzed accurately."
     },
@@ -389,8 +423,10 @@
     "status": "publish",
     "creator": "adaugo",
     "categories": [
+      "Music Business"
+    ],
+    "tags": [
       "artist manager",
-      "Music Business",
       "record label"
     ],
     "seo": {
@@ -410,6 +446,7 @@
     "categories": [
       "Music News &amp; Trends"
     ],
+    "tags": [],
     "seo": {
       "description": "Have you seen the Black Panther soundtrack line-up? Say what you like about Nigerians, but we set the bar when it comes to music, everytime!"
     },
@@ -427,6 +464,7 @@
     "categories": [
       "Announcements"
     ],
+    "tags": [],
     "seo": {}
   },
   {
@@ -442,6 +480,7 @@
       "Music Business",
       "Music News &amp; Trends"
     ],
+    "tags": [],
     "seo": {
       "description": "Put simply, a record label deal is a legal agreement between two parties, the record labels and the artistes. Let’s break it down further..."
     },
@@ -459,6 +498,7 @@
     "categories": [
       "Announcements"
     ],
+    "tags": [],
     "seo": {
       "description": "Our API is now available for public use! 🚀 With our API, developers can programmatically access functionality and data from Royalti.io"
     },
@@ -476,6 +516,7 @@
     "categories": [
       "Music Business"
     ],
+    "tags": [],
     "seo": {
       "description": "Let’s tell it like you’re 5, shall we? Music royalties are payments made to owners of the copyrights to a record/song by institutions who request permission"
     },
@@ -491,12 +532,14 @@
     "status": "publish",
     "creator": "jasmine",
     "categories": [
+      "Music News &amp; Trends"
+    ],
+    "tags": [
       "#concert",
       "#promoter",
       "#Royalti",
       "#tour",
-      "Asake",
-      "Music News &amp; Trends"
+      "Asake"
     ],
     "seo": {
       "description": "Likely explanations for what caused the incident and the role promoters and venue managers have to play in it."
@@ -513,9 +556,9 @@
     "status": "publish",
     "creator": "nedjamez",
     "categories": [
-      "Announcements",
-      "Video"
+      "Announcements"
     ],
+    "tags": [],
     "seo": {},
     "featuredImageId": "57698"
   },
@@ -529,7 +572,9 @@
     "status": "publish",
     "creator": "nedjamez",
     "categories": [
-      "Announcements",
+      "Announcements"
+    ],
+    "tags": [
       "bao",
       "conference"
     ],
@@ -548,6 +593,7 @@
     "categories": [
       "Announcements"
     ],
+    "tags": [],
     "seo": {},
     "featuredImageId": "57719"
   },
@@ -561,10 +607,12 @@
     "status": "publish",
     "creator": "adaugo",
     "categories": [
+      "Music Business"
+    ],
+    "tags": [
       "accounting",
       "analytics",
       "financial management",
-      "Music Business",
       "music business",
       "music royalties",
       "Royalty management"
@@ -585,9 +633,11 @@
     "status": "publish",
     "creator": "thecharlesisidi",
     "categories": [
+      "Music Business"
+    ],
+    "tags": [
       "financial management",
       "licensing",
-      "Music Business",
       "royalties"
     ],
     "seo": {
@@ -605,8 +655,10 @@
     "status": "publish",
     "creator": "thecharlesisidi",
     "categories": [
+      "Music Business"
+    ],
+    "tags": [
       "Blockchain",
-      "Music Business",
       "music royalties",
       "Royalty management"
     ],
@@ -625,7 +677,9 @@
     "status": "publish",
     "creator": "thecharlesisidi",
     "categories": [
-      "Music Business",
+      "Music Business"
+    ],
+    "tags": [
       "music business",
       "music royalties",
       "Royalty management"
@@ -645,7 +699,9 @@
     "status": "publish",
     "creator": "thecharlesisidi",
     "categories": [
-      "Music Business",
+      "Music Business"
+    ],
+    "tags": [
       "music business",
       "music licensing",
       "music royalties"
@@ -665,8 +721,10 @@
     "status": "publish",
     "creator": "thecharlesisidi",
     "categories": [
+      "Music Business"
+    ],
+    "tags": [
       "ChatGPT",
-      "Music Business",
       "music business",
       "music royalties"
     ],
@@ -685,8 +743,10 @@
     "status": "publish",
     "creator": "thecharlesisidi",
     "categories": [
+      "Music Business"
+    ],
+    "tags": [
       "collaboration agreement",
-      "Music Business",
       "music royalties",
       "split sheet"
     ],
@@ -706,11 +766,13 @@
     "status": "publish",
     "creator": "thecharlesisidi",
     "categories": [
+      "Music News &amp; Trends"
+    ],
+    "tags": [
       "afrobeats",
       "burna boy",
       "davido",
       "grammys",
-      "Music News &amp; Trends",
       "rema",
       "tiwa savage",
       "tyla"
@@ -728,7 +790,9 @@
     "status": "publish",
     "creator": "thecharlesisidi",
     "categories": [
-      "Music Business",
+      "Music Business"
+    ],
+    "tags": [
       "music business",
       "music contracts",
       "music licensing",
@@ -749,6 +813,7 @@
     "categories": [
       "Announcements"
     ],
+    "tags": [],
     "seo": {},
     "featuredImageId": "57929"
   },
@@ -762,9 +827,11 @@
     "status": "publish",
     "creator": "thecharlesisidi",
     "categories": [
-      "afrobeats",
-      "Asake",
       "Music News &amp; Trends"
+    ],
+    "tags": [
+      "afrobeats",
+      "Asake"
     ],
     "seo": {
       "description": "In 2023, Asake released his second album, \"Work of Art,\" released in June 2023, and it continued to rank 66th on the Billboard 200 chart."
@@ -781,7 +848,9 @@
     "status": "publish",
     "creator": "thecharlesisidi",
     "categories": [
-      "Music Business",
+      "Music Business"
+    ],
+    "tags": [
       "music business",
       "music catalogue",
       "music royalties",
@@ -802,8 +871,10 @@
     "status": "publish",
     "creator": "thecharlesisidi",
     "categories": [
+      "Music Business"
+    ],
+    "tags": [
       "music",
-      "Music Business",
       "music business",
       "music royalties",
       "Royalty management",
@@ -824,11 +895,13 @@
     "status": "publish",
     "creator": "thecharlesisidi",
     "categories": [
+      "Music Business"
+    ],
+    "tags": [
       "accounting",
       "artificial intelligence",
       "Blockchain",
       "cloud",
-      "Music Business",
       "royalty accounting"
     ],
     "seo": {
@@ -849,6 +922,7 @@
     "categories": [
       "Announcements"
     ],
+    "tags": [],
     "seo": {},
     "featuredImageId": "58149"
   },
@@ -864,6 +938,7 @@
     "categories": [
       "Music Business"
     ],
+    "tags": [],
     "seo": {
       "description": "It is not enough for an artist to focus solely on honing their craft. They must understand the business side of music; music distribution, music publishing"
     },
@@ -881,6 +956,7 @@
     "categories": [
       "Music Business"
     ],
+    "tags": [],
     "seo": {
       "title": "White Label Music Distribution: What It Is and How It Works",
       "description": "Discover the concept of white-label music distribution, its key features, and how it benefits record labels, distribution companies..."
@@ -897,9 +973,11 @@
     "status": "publish",
     "creator": "adaugo",
     "categories": [
+      "Music News &amp; Trends"
+    ],
+    "tags": [
       "Catalog management",
       "music business",
-      "Music News &amp; Trends",
       "music royalties",
       "music tech",
       "record label",
@@ -925,6 +1003,7 @@
     "categories": [
       "Music Business"
     ],
+    "tags": [],
     "seo": {
       "title": "Essential Tips for Independent Artists: Mastering Music Distribution",
       "description": "Providing resources for artists who wish to distribute their music independently. Mastering music distribution does not have to be a..."
@@ -943,6 +1022,7 @@
     "categories": [
       "Music News &amp; Trends"
     ],
+    "tags": [],
     "seo": {
       "title": "Celebrating Onyeka Onwenu: A Legacy of Music And Activism",
       "description": "On July 30, 2024, Nigeria mourned the loss of one of its most cherished entertainers, Onyeka Onwenu. Known for her powerful voice, activism, and contributions to social change, Onyeka’s passing marks a national loss."
@@ -959,8 +1039,10 @@
     "status": "publish",
     "creator": "adaugo",
     "categories": [
+      "Music Business"
+    ],
+    "tags": [
       "Catalog management",
-      "Music Business",
       "music royalties",
       "royalti.io",
       "Royalty management"
@@ -980,8 +1062,10 @@
     "status": "publish",
     "creator": "adaugo",
     "categories": [
+      "Music Business"
+    ],
+    "tags": [
       "international collaborations",
-      "Music Business",
       "music business",
       "music collaboration",
       "music feature",
@@ -1007,10 +1091,12 @@
     "status": "publish",
     "creator": "adaugo",
     "categories": [
+      "Music Business"
+    ],
+    "tags": [
       "Catalog management",
       "copyrights",
       "intellectual property",
-      "Music Business",
       "music business",
       "music royalties",
       "music tech",
@@ -1034,9 +1120,11 @@
     "status": "publish",
     "creator": "adaugo",
     "categories": [
+      "Music Business"
+    ],
+    "tags": [
       "Catalog management",
       "immersive tech",
-      "Music Business",
       "music business",
       "music royalties",
       "music tech",
@@ -1061,7 +1149,9 @@
     "status": "publish",
     "creator": "adaugo",
     "categories": [
-      "Music Business",
+      "Music Business"
+    ],
+    "tags": [
       "music business",
       "record label",
       "royalti.io",
@@ -1084,7 +1174,9 @@
     "status": "publish",
     "creator": "adaugo",
     "categories": [
-      "Music Business",
+      "Music Business"
+    ],
+    "tags": [
       "music catalogue",
       "Nigerian music in the '60s",
       "older music",
@@ -1110,6 +1202,7 @@
     "categories": [
       "Music Business"
     ],
+    "tags": [],
     "seo": {
       "description": "Easy and practical tips on how to maximize your Royalties as an independent artist and music company. Protecting..."
     },
@@ -1125,10 +1218,12 @@
     "status": "publish",
     "creator": "adaugo",
     "categories": [
+      "Music Business"
+    ],
+    "tags": [
       "ai",
       "AI in music production",
       "Catalog management",
-      "Music Business",
       "music business",
       "music royalties",
       "music tech",
@@ -1154,6 +1249,7 @@
     "categories": [
       "Music Business"
     ],
+    "tags": [],
     "seo": {
       "title": "Leveraging International Collaborations as a Nigerian Artist",
       "description": "A well-executed collaboration is gold. Over the past five years, we have witnessed more international collaborations within the Nigerian..."
@@ -1172,6 +1268,7 @@
     "categories": [
       "Music Business"
     ],
+    "tags": [],
     "seo": {
       "title": "Navigating The Growing Demand For Nigerian Music",
       "description": "Wizkid, Burna Boy, Tems, and Rema, all celebrated for their unique styles and how they infuse their Nigerian identity in their music."
@@ -1188,10 +1285,12 @@
     "status": "publish",
     "creator": "adaugo",
     "categories": [
+      "Music Business"
+    ],
+    "tags": [
       "Catalog management",
       "digital distribution",
       "independent artists",
-      "Music Business",
       "music royalties",
       "royalti.io",
       "royalties",
@@ -1214,8 +1313,10 @@
     "status": "publish",
     "creator": "adaugo",
     "categories": [
+      "Music Business"
+    ],
+    "tags": [
       "'70s",
-      "Music Business",
       "Nigerian afrobeat",
       "Nigerian music history",
       "Nigerian music in the '70s",
@@ -1236,7 +1337,9 @@
     "status": "publish",
     "creator": "adaugo",
     "categories": [
-      "Announcements",
+      "Announcements"
+    ],
+    "tags": [
       "Catalog management",
       "music royalties",
       "royalti.io",
@@ -1257,8 +1360,10 @@
     "status": "publish",
     "creator": "adaugo",
     "categories": [
+      "Music Business"
+    ],
+    "tags": [
       "2025",
-      "Music Business",
       "music catalogue",
       "music professionals",
       "music royalties",
@@ -1282,8 +1387,10 @@
     "status": "publish",
     "creator": "adaugo",
     "categories": [
+      "Music Business"
+    ],
+    "tags": [
       "2024",
-      "Music Business",
       "music business",
       "royalti.io",
       "royalties",
@@ -1309,6 +1416,7 @@
       "Music Business",
       "Music News &amp; Trends"
     ],
+    "tags": [],
     "seo": {
       "title": "authenticity in music- drive streaming revenue",
       "description": "how authenticity in music is creating opportunities for African artists. how Cultural Narratives have become a driver for streaming income"
@@ -1328,6 +1436,7 @@
       "Music Business",
       "Music News &amp; Trends"
     ],
+    "tags": [],
     "seo": {},
     "featuredImageId": "58366"
   },
@@ -1341,8 +1450,10 @@
     "status": "publish",
     "creator": "adaugo",
     "categories": [
+      "Announcements"
+    ],
+    "tags": [
       "2024",
-      "Announcements",
       "Catalog management",
       "glossary",
       "music",
@@ -1366,11 +1477,13 @@
     "status": "publish",
     "creator": "adaugo",
     "categories": [
+      "Music &amp;Tech",
+      "Music Business"
+    ],
+    "tags": [
       "2024",
       "Ayra Starr",
       "Catalog management",
-      "Music &amp;Tech",
-      "Music Business",
       "music royalties",
       "Nigerian female artist",
       "royalti.io",
@@ -1394,6 +1507,7 @@
     "categories": [
       "Music News &amp; Trends"
     ],
+    "tags": [],
     "seo": {
       "description": "Taking a walk through time to explore the rich history of Nigerian music in the '80s. Experience the movers and shakers of the airwaves."
     },
@@ -1411,6 +1525,7 @@
     "categories": [
       "Music News &amp; Trends"
     ],
+    "tags": [],
     "seo": {
       "title": "Nigerian Music In The '80s (Part 2)",
       "description": "Taking a walk through time to explore the rich history of Nigerian music in the '80s. Experience the movers and shakers of the airwaves."
@@ -1427,10 +1542,12 @@
     "status": "publish",
     "creator": "adaugo",
     "categories": [
-      "#Spilts",
       "Announcements",
+      "Music Business"
+    ],
+    "tags": [
+      "#Spilts",
       "Catalog management",
-      "Music Business",
       "music royalties",
       "royalti.io",
       "royalties",
@@ -1453,7 +1570,9 @@
     "status": "publish",
     "creator": "adaugo",
     "categories": [
-      "Announcements",
+      "Announcements"
+    ],
+    "tags": [
       "Catalog management",
       "music royalties",
       "royalti.io",
@@ -1474,7 +1593,9 @@
     "status": "publish",
     "creator": "adaugo",
     "categories": [
-      "Announcements",
+      "Announcements"
+    ],
+    "tags": [
       "Catalog management",
       "music business",
       "music royalties",
@@ -1499,7 +1620,9 @@
     "status": "publish",
     "creator": "adaugo",
     "categories": [
-      "Music Business",
+      "Music Business"
+    ],
+    "tags": [
       "music business",
       "music royalties",
       "music tech",
@@ -1526,6 +1649,7 @@
     "categories": [
       "Announcements"
     ],
+    "tags": [],
     "seo": {
       "description": "What made Nigerian music of the ‘90s so great? Perhaps it was the reggae rhythms on every radio station or maybe it was the gradual yet..."
     },
@@ -1542,8 +1666,10 @@
     "creator": "adaugo",
     "categories": [
       "Announcements",
+      "Music Business"
+    ],
+    "tags": [
       "copyrights in Nigeria",
-      "Music Business",
       "music royalties",
       "Nigeria Music Industry",
       "Nigerian music",
@@ -1566,6 +1692,7 @@
     "categories": [
       "Announcements"
     ],
+    "tags": [],
     "seo": {
       "title": "Nigeria’s Investment and Securities Act 2025 and Music Royalties",
       "description": "Discover how Nigeria’s Investment and Securities Act 2025 impacts music royalties and digital asset regulation for artists and investors."
@@ -1584,6 +1711,7 @@
     "categories": [
       "Announcements"
     ],
+    "tags": [],
     "seo": {
       "title": "Revenue Disparity in Music Streaming for Nigerian Artists",
       "description": "Explore the real impact of music streaming in Nigeria and why earnings lag behind global standards. How streaming platforms..."
@@ -1600,7 +1728,9 @@
     "status": "publish",
     "creator": "adaugo",
     "categories": [
-      "Announcements",
+      "Announcements"
+    ],
+    "tags": [
       "music business",
       "Nigerian artists",
       "Nigerian music",
@@ -1624,8 +1754,10 @@
     "status": "publish",
     "creator": "adaugo",
     "categories": [
+      "Announcements"
+    ],
+    "tags": [
       "2000s",
-      "Announcements",
       "music business",
       "music royalties",
       "music tech",
@@ -1646,7 +1778,9 @@
     "status": "publish",
     "creator": "adaugo",
     "categories": [
-      "Announcements",
+      "Announcements"
+    ],
+    "tags": [
       "music",
       "music business",
       "music professionals",
@@ -1672,6 +1806,7 @@
     "categories": [
       "Announcements"
     ],
+    "tags": [],
     "seo": {
       "description": "Discover how Afrobeats has evolved from its West African roots to dominate global charts. Explore its history, cultural impact, and rise through streaming, collaborations, and viral moments."
     },

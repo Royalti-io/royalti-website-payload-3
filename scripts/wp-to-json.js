@@ -118,6 +118,21 @@ const convertToJson = async () => {
     );
     console.log(`✅ Processed ${processedCategories.length} categories`);
     
+    // Process tags
+    const tags = channel['wp:tag'] || [];
+    const tagList = Array.isArray(tags) ? tags : [tags];
+    const processedTags = tagList.map(tag => ({
+      id: extractText(tag['wp:term_id']),
+      name: extractText(tag['wp:tag_name']),
+      slug: extractText(tag['wp:tag_slug']),
+    })).filter(tag => tag.name && tag.slug);
+    
+    fs.writeFileSync(
+      path.join(CONFIG.outputDir, 'tags.json'),
+      JSON.stringify(processedTags, null, 2)
+    );
+    console.log(`✅ Processed ${processedTags.length} tags`);
+    
     // Process authors
     const authors = channel['wp:author'] || [];
     const authorList = Array.isArray(authors) ? authors : [authors];
@@ -158,10 +173,57 @@ const convertToJson = async () => {
         creator: extractText(post['dc:creator']),
       };
       
-      // Extract categories
+      // Extract categories and tags
+      // Access raw category data and convert to consistent format
       const postCategories = post.category || [];
       const categoryArray = Array.isArray(postCategories) ? postCategories : [postCategories];
-      postData.categories = categoryArray.map(cat => extractText(cat)).filter(Boolean);
+      
+      // In WordPress XML, categories have attributes stored in a special way
+      // Log raw object details to understand the structure
+      if (postData.id === '57549') {
+        console.log('DEBUG: Raw post categories object keys:', Object.keys(post));
+        console.log('DEBUG: Raw category data structure example:');
+        if (categoryArray.length > 0) {
+          const example = categoryArray[0];
+          console.log('Keys:', Object.keys(example));
+          console.log('Direct stringify:', JSON.stringify(example));
+          // Check if attributes are stored in @_ prefix format (common XML parsing pattern)
+          const attrKeys = Object.keys(example).filter(k => k.startsWith('@_'));
+          console.log('Attribute keys (@_):', attrKeys);
+        }
+      }
+      
+      // Extract both categories and tags from the category array
+      const categories = [];
+      const tags = [];
+      
+      // Process each category element and sort into categories or tags based on domain
+      categoryArray.forEach(cat => {
+        if (!cat) return; // Skip null/undefined entries
+        
+        const text = extractText(cat);
+        if (!text) return; // Skip empty text
+        
+        // Check if this is a tag or category based on the domain attribute
+        // In WordPress XML, attributes are stored with @_ prefix
+        if (cat['@_domain'] === 'post_tag') {
+          tags.push(text);
+        } else {
+          // It's a category if it has no domain or domain is 'category'
+          if (!cat['@_domain'] || cat['@_domain'] === 'category') {
+            categories.push(text);
+          }
+        }
+      });
+      
+      // Assign the extracted categories and tags to the post data
+      postData.categories = categories;
+      postData.tags = tags;
+      
+      // Debug output for specific posts to verify
+      if (postData.id === '57549') {
+        console.log(`Post ${postData.title} has ${tags.length} tags:`, tags);
+      }
       
       // Extract metadata
       const postMeta = post['wp:postmeta'] || [];

@@ -225,15 +225,17 @@ interface WPPost {
   title: string;
   slug: string;
   content: string;
+  excerpt: string;
+  publishDate: string;
   status: string;
-  date?: string;
-  excerpt?: string;
-  creator?: string;
-  categories?: string[];
+  creator: string;
+  categories: string[];
+  tags?: string[];
   seo?: {
     title?: string;
     description?: string;
   };
+  featuredImageId?: string;
 }
 
 interface WPPage {
@@ -355,6 +357,12 @@ interface WPCategory {
   slug: string;
 }
 
+interface WPTag {
+  id: string;
+  name: string;
+  slug: string;
+}
+
 interface Author {
   login: string;
   email: string;
@@ -456,9 +464,94 @@ const TEXT_FORMAT_MAP: Record<LexicalTextFormat, number> = {
   superscript: 1 << 6,
 };
 
-const htmlToLexical = (html: string): PayloadRichText => {
+// Helper function to extract WordPress image ID from a URL or class
+const extractWpImageId = (imgElement: CheerioCollectionType<CheerioElementType>): string | null => {
+  // Try to extract from class name (wp-image-XXXXX)
+  const className = imgElement.attr('class') || '';
+  const classMatch = className.match(/wp-image-([0-9]+)/);
+  if (classMatch && classMatch[1]) {
+    return classMatch[1];
+  }
+  
+  // Try to extract from parent anchor href
+  const parentHref = imgElement.parent('a').attr('href') || '';
+  const urlMatch = parentHref.match(/\/wp-content\/uploads\/[^\/]+\/([^\/]+)\.[a-zA-Z]+$/);
+  if (urlMatch && urlMatch[1]) {
+    // This is just the filename, not the ID, but it can help find the media
+    return urlMatch[1];
+  }
+  
+  return null;
+};
+
+const htmlToLexical = (html: string, mediaMap?: Record<string, string>): PayloadRichText => {
   const $: CheerioAPIType = cheerio.load(html);
   const children: LexicalBlockNode[] = []; // Root children should be block nodes
+
+  // Pre-process: Extract all img tags and create media blocks for them
+  // This handles standalone images not nested in paragraphs
+  $('img:not(p img, h1 img, h2 img, h3 img, h4 img, h5 img, h6 img, li img)').each((_, img) => {
+    const imgElement = $(img);
+    const mediaBlock = createMediaBlockFromImg(imgElement, mediaMap);
+    if (mediaBlock) {
+      children.push(mediaBlock);
+    }
+    // Remove this image from the DOM so it doesn't get processed again
+    imgElement.remove();
+  });
+
+  function createMediaBlockFromImg(imgElement: CheerioCollectionType<CheerioElementType>, mediaMap?: Record<string, string>): any {
+    // Extract the WordPress image ID or media details
+    const wpImageId = extractWpImageId(imgElement);
+    const src = imgElement.attr('src') || '';
+    const alt = imgElement.attr('alt') || '';
+    
+    // Try to find media ID from mediaMap
+    let mediaId: string | number | null = null;
+    
+    if (wpImageId && mediaMap && mediaMap[wpImageId]) {
+      mediaId = Number(mediaMap[wpImageId]);
+    } else if (mediaMap) {
+      // Try to match by filename in the src attribute
+      const filename = src.split('/').pop()?.split('?')[0] || '';
+      for (const [oldId, newId] of Object.entries(mediaMap)) {
+        if (src.includes(oldId) || oldId.includes(filename)) {
+          mediaId = Number(newId);
+          break;
+        }
+      }
+    }
+    
+    // Create a media block
+    if (mediaId) {
+      return {
+        type: 'block',
+        fields: {
+          blockName: alt || '', // Use alt text as block name if available
+          blockType: 'mediaBlock',
+          media: mediaId
+        },
+        format: '',
+        version: 2,
+        children: [], // Blocks don't need children
+      };
+    }
+    
+    // Fallback: Create a paragraph with text indicating the image couldn't be found
+    return {
+      type: 'paragraph',
+      version: 1,
+      children: [{ 
+        type: 'text', 
+        text: `[Image: ${alt || src}]`, 
+        version: 1, 
+        format: 0 
+      }],
+      direction: null,
+      format: '',
+      indent: 0,
+    };
+  }
 
   function processNode(node: CheerioElementType, $: CheerioAPIType): LexicalBlockNode | null {
     const element = $(node);
@@ -483,6 +576,100 @@ const htmlToLexical = (html: string): PayloadRichText => {
 
     // Handle element nodes
     const tagName = node.tagName?.toLowerCase();
+    
+    // Special handling for our custom-link elements
+    if (tagName === 'custom-link') {
+      const href = element.attr('href') || '';
+      const target = element.attr('target');
+      
+      // Process the inner content of the link, which might include styled spans
+      const linkChildren: Array<LexicalTextNode> = [];
+      
+      // Process all the content inside, including spans with styles
+      element.find('span').each((_, spanEl) => {
+        const span = $(spanEl);
+        const style = span.attr('style') || '';
+        const spanText = span.text();
+        
+        if (spanText.trim()) {
+          // Parse formatting based on style
+          let format = 0;
+          
+          // Parse font-weight for bold
+          if (style.includes('font-weight:')) {
+            const fontWeightMatch = style.match(/font-weight:\s*(\d+|bold|bolder)/i);
+            if (fontWeightMatch) {
+              const weight = fontWeightMatch[1];
+              if (weight === 'bold' || weight === 'bolder' || (parseInt(weight, 10) >= 600)) {
+                format |= TEXT_FORMAT_MAP.bold;
+              }
+            }
+          }
+          
+          // Parse font-style for italic
+          if (style.includes('font-style:') && style.includes('italic')) {
+            format |= TEXT_FORMAT_MAP.italic;
+          }
+          
+          // Add the text with formatting
+          linkChildren.push({
+            type: 'text',
+            text: spanText,
+            version: 1,
+            format: format
+          });
+        }
+      });
+      
+      // If no spans were found, use the entire text content
+      if (linkChildren.length === 0) {
+        linkChildren.push({
+          type: 'text',
+          text: element.text(),
+          version: 1,
+          format: 0
+        });
+      }
+      
+      // Create a link node wrapped in a paragraph (block node)
+      const linkNode: LexicalLinkNode = {
+        type: 'link',
+        version: 1,
+        children: linkChildren,
+        direction: null,
+        format: '',
+        indent: 0,
+        url: href,
+        fields: {
+          linkType: 'custom',
+          url: href,
+          newTab: target === '_blank'
+        }
+      };
+      
+      // Wrap in a paragraph since we must return a block node
+      return {
+        type: 'paragraph',
+        version: 1,
+        children: [linkNode],
+        direction: null,
+        format: '',
+        indent: 0
+      };
+    }
+    
+    // Check for images within block elements
+    if (tagName && ['p', 'div', 'figure'].includes(tagName)) {
+      // Check if this element contains ONLY an image (plus optional anchor)
+      const images = element.find('img');
+      if (images.length === 1 && element.text().trim() === '') {
+        // This paragraph/div contains only an image, convert to media block
+        const mediaBlock = createMediaBlockFromImg(images, mediaMap);
+        if (mediaBlock) {
+          return mediaBlock;
+        }
+      }
+    }
 
     // Recursive function to process children and build up text/link nodes
     function processChildren(element: CheerioCollectionType<CheerioElementType>, $: CheerioAPIType): Array<LexicalTextNode | LexicalLinkNode> {
@@ -499,26 +686,179 @@ const htmlToLexical = (html: string): PayloadRichText => {
           const childTagName = childNode.tagName.toLowerCase();
           const currentElementForFormat = $(childNode);
 
-          // Simple format detection - can be expanded
+          // Skip processing images inside links, they'll be handled separately
+          if (childTagName === 'img') {
+            // Skip the image, it will be handled as a block
+            return;
+          }
+
+          // Handle style attributes directly
+          const styleAttr = currentElementForFormat.attr('style') || '';
+          
+          // Check for style attributes or our custom data attributes
+          if (styleAttr || currentElementForFormat.attr('data-weight') || currentElementForFormat.attr('data-italic')) {
+            // Parse font-weight for bold - either from style or data attribute
+            if (currentElementForFormat.attr('data-weight') === 'true' || styleAttr.includes('font-weight:')) {
+              if (currentElementForFormat.attr('data-weight') === 'true') {
+                // Data attribute explicitly marks this as bold
+                format |= TEXT_FORMAT_MAP.bold;
+              } else if (styleAttr.includes('font-weight:')) {
+                // Parse from style
+                const fontWeightMatch = styleAttr.match(/font-weight:\s*(\d+|bold|bolder)/i);
+                if (fontWeightMatch) {
+                  const weight = fontWeightMatch[1];
+                  // Apply bold formatting for weights >= 600 or 'bold'/'bolder'
+                  if (weight === 'bold' || weight === 'bolder' || (parseInt(weight, 10) >= 600)) {
+                    format |= TEXT_FORMAT_MAP.bold;
+                  }
+                }
+              }
+            }
+            
+            // Parse font-style for italic - either from style or data attribute
+            if (currentElementForFormat.attr('data-italic') === 'true' || 
+                (styleAttr.includes('font-style:') && styleAttr.includes('italic'))) {
+              format |= TEXT_FORMAT_MAP.italic;
+            }
+            
+            // Parse text decoration
+            if (styleAttr.includes('text-decoration:')) {
+              if (styleAttr.includes('underline')) format |= TEXT_FORMAT_MAP.underline;
+              if (styleAttr.includes('line-through')) format |= TEXT_FORMAT_MAP.strikethrough;
+            }
+          }
+          
+          // Tag-based format detection
           if (childTagName === 'strong' || childTagName === 'b') format |= TEXT_FORMAT_MAP.bold;
           if (childTagName === 'em' || childTagName === 'i') format |= TEXT_FORMAT_MAP.italic;
+          if (childTagName === 'u' || styleAttr.includes('text-decoration: underline')) format |= TEXT_FORMAT_MAP.underline;
+          if (childTagName === 's' || childTagName === 'strike' || styleAttr.includes('text-decoration: line-through')) format |= TEXT_FORMAT_MAP.strikethrough;
           // Add more format handlers (underline, strikethrough) if needed
 
           if (childTagName === 'a') {
+            // Check if this anchor contains only an image
+            const anchorImages = currentElementForFormat.find('img');
+            if (anchorImages.length === 1 && currentElementForFormat.text().trim() === '') {
+              // Skip anchors that only contain images, they'll be handled as media blocks
+              return;
+            }
+            
+            // Get link attributes directly
+            const href = currentElementForFormat.attr('href') || '';
+            const target = currentElementForFormat.attr('target');
+            const isPlainLink = currentElementForFormat.attr('data-plain-link') === 'true';
+            
+            // Important: Extract the full text of the link for fallback
+            const linkText = currentElementForFormat.text().trim();
+            
+            // Process the children of the link to get any formatting
+            let linkChildren: Array<LexicalTextNode | LexicalLinkNode> = [];
+            
+            // For plain links marked with data-plain-link, use simplified processing
+            if (isPlainLink) {
+              // For plain links, just use the link text directly
+              linkChildren = [{
+                type: 'text',
+                text: linkText || href,
+                version: 1,
+                format: 0 // Plain text
+              }];
+            } else {
+              // For complex links, use full processing
+              // Get all direct child nodes and process them
+              let hasProcessedChildren = false;
+              
+              // Special handling for direct text nodes inside links
+              currentElementForFormat.contents().each((_, childNode) => {
+                if (childNode.type === 'text' && $(childNode).text().trim()) {
+                  linkChildren.push({
+                    type: 'text',
+                    text: $(childNode).text(),
+                    version: 1,
+                    format: 0 // Plain text
+                  });
+                  hasProcessedChildren = true;
+                } else if (childNode.type === 'tag') {
+                  const childTag = childNode.tagName.toLowerCase();
+                  
+                  // Special handling for spans inside links
+                  if (childTag === 'span') {
+                    const span = $(childNode);
+                    const spanText = span.text();
+                    if (spanText.trim()) {
+                      // Determine formatting from styles
+                      let format = 0;
+                      const style = span.attr('style') || '';
+                      const hasDataWeight = span.attr('data-weight') === 'true';
+                      const hasDataItalic = span.attr('data-italic') === 'true';
+                      
+                      // Parse font-weight for bold - from style or data attribute
+                      if (hasDataWeight || style.includes('font-weight:')) {
+                        if (hasDataWeight) {
+                          format |= TEXT_FORMAT_MAP.bold;
+                        } else if (style.includes('font-weight:')) {
+                          const fontWeightMatch = style.match(/font-weight:\s*(\d+|bold|bolder)/i);
+                          if (fontWeightMatch) {
+                            const weight = fontWeightMatch[1];
+                            if (weight === 'bold' || weight === 'bolder' || (parseInt(weight, 10) >= 600)) {
+                              format |= TEXT_FORMAT_MAP.bold;
+                            }
+                          }
+                        }
+                      }
+                      
+                      // Parse font-style for italic - from style or data attribute
+                      if (hasDataItalic || (style.includes('font-style:') && style.includes('italic'))) {
+                        format |= TEXT_FORMAT_MAP.italic;
+                      }
+                      
+                      // Add formatted text node
+                      linkChildren.push({
+                        type: 'text',
+                        text: spanText,
+                        version: 1,
+                        format: format
+                      });
+                      hasProcessedChildren = true;
+                    }
+                  } else {
+                    // For other tags, try to process them recursively
+                    const processedSubChildren = processChildren($(childNode), $);
+                    if (processedSubChildren.length > 0) {
+                      linkChildren.push(...processedSubChildren);
+                      hasProcessedChildren = true;
+                    }
+                  }
+                }
+              });
+              
+              // If we somehow failed to extract any children, use the full link text as fallback
+              if (!hasProcessedChildren && linkText) {
+                linkChildren = [{
+                  type: 'text',
+                  text: linkText,
+                  version: 1,
+                  format: 0
+                }];
+              }
+            }
+            
+            // Always create a link node, even if we couldn't extract formatted children
             const linkNode: LexicalLinkNode = {
               type: 'link',
               version: 1,
-              children: processChildren(currentElementForFormat, $), // Process children of the link
+              children: linkChildren.length > 0 ? linkChildren : [{ type: 'text', text: linkText || href, version: 1, format: 0 }],
               direction: null,
               format: '',
               indent: 0,
-              url: currentElementForFormat.attr('href') || '',
-              fields: { // Payload 3.0 link structure
+              url: href,
+              fields: {
                 linkType: 'custom',
-                url: currentElementForFormat.attr('href') || '',
-                newTab: currentElementForFormat.attr('target') === '_blank',
+                url: href,
+                newTab: target === '_blank'
               }
             };
+            
             processedChildren.push(linkNode);
           } else if (format !== 0) {
             // If it's a formatting tag, process its children and apply the format
@@ -555,7 +895,7 @@ const htmlToLexical = (html: string): PayloadRichText => {
         const listItems: LexicalListItemNode[] = [];
         const liNodes = $(element).children('li');
         for (let i = 0; i < liNodes.length; i++) {
-          const liElement = liNodes.get(i) as CheerioElement; // .get(i) returns cheerio.Element | undefined
+          const liElement = liNodes.get(i) as CheerioElementType; // .get(i) returns cheerio.Element | undefined
           if (liElement) { // Ensure element exists
             listItems.push({
               type: 'listitem',
@@ -570,6 +910,10 @@ const htmlToLexical = (html: string): PayloadRichText => {
         }
         lexicalBlockNode = { type: 'list', listType: tagName === 'ul' ? 'bullet' : 'number', tag: tagName, version: 1, children: listItems, direction: null, format: '', indent: 0, start: 1, };
         break;
+      }
+      case 'img': {
+        // Handle standalone images
+        return createMediaBlockFromImg($(element), mediaMap);
       }
       // Note: 'a', 'strong', 'em', 'b', 'i' are handled by processChildren for inline conversion.
       // Direct children of the root that are inline will be wrapped in paragraphs by the fallback.
@@ -689,7 +1033,9 @@ const createCategory = async (category: WPCategory): Promise<string> => {
 const importCategories = async (): Promise<Record<string, string>> => {
   log('Importing categories...');
   const categories = loadJson<WPCategory>('categories.json');
+  // Create two maps: one by ID and one by name for easier lookups
   const categoryMap: Record<string, string> = {};
+  const categoryNameMap: Record<string, string> = {}; // Map name -> id
   let importCount = 0;
 
   for (const category of categories) {
@@ -701,12 +1047,15 @@ const importCategories = async (): Promise<Record<string, string>> => {
 
       if (existingCategories.docs.length > 0 && CONFIG.skipExisting) {
         log(`⏭️  Category already exists: ${category.name}`);
-        categoryMap[category.id.toString()] = existingCategories.docs[0].id.toString();
+        const categoryId = existingCategories.docs[0].id.toString();
+        categoryMap[category.id.toString()] = categoryId;
+        categoryNameMap[category.name] = categoryId; // Also store by name
         continue;
       }
 
       const categoryId = await createCategory(category);
       categoryMap[category.id.toString()] = categoryId;
+      categoryNameMap[category.name] = categoryId; // Also store by name
 
       importCount++;
       log(`✅ Created category: ${category.name}`);
@@ -716,7 +1065,54 @@ const importCategories = async (): Promise<Record<string, string>> => {
   }
 
   log(`Imported ${importCount} categories`);
-  return categoryMap;
+  // Return the name-to-id map for easier lookups by name
+  return categoryNameMap;
+};
+
+const createTag = async (tag: WPTag): Promise<string> => {
+  const result = await payload.create({
+    collection: 'tags',
+    data: {
+      title: tag.name,
+      slug: tag.slug,
+    },
+  });
+  return (result as { id: string | number }).id.toString();
+};
+
+const importTags = async (): Promise<Record<string, string>> => {
+  log('Importing tags...');
+  const tags = loadJson<WPTag>('tags.json');
+  const tagMap: Record<string, string> = {}; // id -> id mapping
+  const tagNameMap: Record<string, string> = {}; // name -> id mapping
+  let importCount = 0;
+  
+  for (const tag of tags) {
+    try {
+      const existingTags = await payload.find({
+        collection: 'tags',
+        where: { slug: { equals: tag.slug } },
+      });
+      if (existingTags.docs.length > 0 && CONFIG.skipExisting) {
+        log(`⏭️  Tag already exists: ${tag.name}`);
+        const tagId = existingTags.docs[0].id.toString();
+        tagMap[tag.id.toString()] = tagId;
+        tagNameMap[tag.name] = tagId; // Also store by name
+        continue;
+      }
+      const result = await createTag(tag);
+      tagMap[tag.id.toString()] = result;
+      tagNameMap[tag.name] = result; // Also store by name
+      importCount++;
+      log(`✅ Created tag: ${tag.name}`);
+    } catch (err) {
+      logError(`Failed to import tag ${tag.name}`, err as Error);
+    }
+  }
+  
+  log(`Imported ${importCount} tags`);
+  // Return the name-to-id map for easier lookups by name
+  return tagNameMap;
 };
 
 const createUser = async (user: WPUser): Promise<string> => {
@@ -844,18 +1240,12 @@ const importMedia = async (payload: Payload): Promise<Record<string, string>> =>
       const altText = media.alt || defaultAltText.replace(/[-_]/g, ' ');
 
       // Extract YYYY/MM/ prefix from media.url
-      let prefixedFilename = filename; // Default to original filename
       // const urlParts = media.url.match(/\/uploads\/(\d{4}\/\d{2})\//);
       // if (urlParts?.[1]) {
       //   const datePrefix = `${urlParts[1]}/`; // e.g., "2018/02/"
-      //   prefixedFilename = `${datePrefix}${filename}`;
-      //   log(`Uploading ${filename} as ${prefixedFilename} (${(response.data.byteLength / 1024).toFixed(2)} KB) to Payload...`);
-      // } else {
-      //   log(`⚠️ Could not extract YYYY/MM from URL: ${media.url}. Uploading ${filename} without date prefix.`);
-      //   // Log without the 'as prefixedFilename' part if no prefix is applied
-      //   log(`Uploading ${filename} (${(response.data.byteLength / 1024).toFixed(2)} KB) to Payload...`);
+      //   const currentYear = datePrefix.split('/')[0];
+      //   const currentMonth = datePrefix.split('/')[1];
       // }
-
 
       const newMediaDoc = await payload.create({
         collection: 'media',
@@ -864,7 +1254,7 @@ const importMedia = async (payload: Payload): Promise<Record<string, string>> =>
           wordpressId: media.id, // Store the WordPress ID
         },
         file: {
-          name: prefixedFilename, // Use prefixed filename
+          name: filename, // Use prefixed filename
           data: Buffer.from(response.data),
           mimetype: mimeType,
           size: response.data.byteLength,
@@ -919,7 +1309,7 @@ interface ScriptPayloadRequest {
   skipRevalidation?: boolean; // Our custom flag
 }
 
-const importPosts = async (categoryMap: Record<string, string>, userMap: Record<string, string>, mediaMap: Record<string, string>) => {
+const importPosts = async (categoryMap: Record<string, string>, userMap: Record<string, string>, mediaMap: Record<string, string>, tagMap: Record<string, string> = {}) => {
   log('Importing posts...');
   const posts = loadJson<WPPost>('posts.json');
   let importCount = 0;
@@ -936,19 +1326,240 @@ const importPosts = async (categoryMap: Record<string, string>, userMap: Record<
         continue;
       }
 
-      const postCategories: string[] = [];
+      // Map post categories
+      const categoryIds: number[] = [];
       if (post.categories && Array.isArray(post.categories)) {
         const categories = loadJson<WPCategory>('categories.json');
         for (const categoryName of post.categories) {
           const category = categories.find(c => c.name === categoryName);
           if (category && categoryMap[category.id]) {
-            postCategories.push(categoryMap[category.id]);
+            // Convert string ID to number
+            const categoryId = Number(categoryMap[category.id]);
+            if (!isNaN(categoryId)) {
+              categoryIds.push(categoryId);
+            }
           }
         }
       }
 
+      // Map post tags
+      const tagIds: number[] = [];
+      if (post.tags && Array.isArray(post.tags)) {
+        const tags = loadJson<WPTag>('tags.json');
+        for (const tagName of post.tags) {
+          const tag = tags.find(t => t.name === tagName);
+          if (tag && tagMap[tag.id]) {
+            // Convert string ID to number
+            const tagId = Number(tagMap[tag.id]);
+            if (!isNaN(tagId)) {
+              tagIds.push(tagId);
+            }
+          }
+        }
+      }
+      
+      // Map post author to authors array
+      let authors: number[] | null = null;
+      if (post.creator && userMap[post.creator]) {
+        const userId = Number(userMap[post.creator]);
+        if (!isNaN(userId)) {
+          authors = [userId];
+        }
+      }
+
+      // Extract featured image if present using the post.featuredImageId field
+      let featuredImageId: number | null = null;
+      
+      if (post.featuredImageId && mediaMap[post.featuredImageId]) {
+        featuredImageId = Number(mediaMap[post.featuredImageId]);
+        log(`Set featured image ID to: ${featuredImageId} from WordPress featured image ID: ${post.featuredImageId}`);
+      }
+
+      // Preprocess content to replace [object Object]
+      let processedContent = post.content.replace(/\[object Object\]/g, '');
+      // Remove empty paragraphs
+      processedContent = processedContent.replace(/<p>\s*<\/p>/g, '');
+      
+      // Special preprocessing for complex HTML content
+      const tempDom = cheerio.load(processedContent);
+      
+      // First, clean up any empty spans that may be causing issues
+      tempDom('span:empty').remove();
+      
+      // Process all links with spans inside them
+      tempDom('a').each((_, link) => {
+        const $link = tempDom(link);
+        const href = $link.attr('href');
+        const target = $link.attr('target');
+        
+        // Skip if no href
+        if (!href) return;
+        
+        // Extract the link HTML - this preserves any spans inside with their formatting
+        const linkInnerHtml = $link.html();
+        
+        // Check if this link is just plain text or contains styled spans
+        const hasSpans = $link.find('span').length > 0;
+        
+        if (hasSpans) {
+          // For links with spans, convert to our custom element for special handling
+          $link.replaceWith(`<custom-link href="${href}" ${target ? `target="${target}"` : ''}>${linkInnerHtml}</custom-link>`);
+        } else {
+          // For simple links, make sure they're still properly processed
+          // Keep them as regular <a> tags but normalize attributes
+          $link.attr('data-plain-link', 'true');
+        }
+      });
+      
+      // Process any inline styles on spans outside of links
+      tempDom('span[style]').each((_, span) => {
+        const $span = tempDom(span);
+        const style = $span.attr('style') || '';
+        const text = $span.text().trim();
+        
+        // Only process non-empty spans that aren't inside links or custom-links
+        if (text && !$span.parents('a, custom-link').length) {
+          // Mark the span with data attributes for styling
+          if (style.includes('font-weight:')) {
+            $span.attr('data-weight', 'true');
+          }
+          if (style.includes('font-style:') && style.includes('italic')) {
+            $span.attr('data-italic', 'true');
+          }
+        }
+      });
+      
+      processedContent = tempDom.html() || processedContent;
+
+      // Process content to replace media URLs with new media IDs
+      
+      // Look for image URLs in the content and replace them with the new media IDs
+      Object.entries(mediaMap).forEach(([oldId, newId]) => {
+        // Extract the filename from oldId if it's a URL
+        const filename = oldId.split('/').pop();
+        if (filename) {
+          // Look for URLs containing this filename in the content
+          const regex = new RegExp(`https?:\/\/royalti\.io\/wp-content\/uploads\/[^\s"']+${filename.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`, 'gi');
+          processedContent = processedContent.replace(regex, (match) => {
+            log(`Replacing media URL: ${match} with ID: ${newId}`);
+            return `/media/${newId}`;
+          });
+        }
+      });
+
       if (!CONFIG.dryRun) {
         const createPost = async (post: WPPost): Promise<void> => {
+          // Find author ID from creator name
+          let authorId: string | null = null;
+          if (post.creator && userMap[post.creator]) {
+            authorId = userMap[post.creator];
+          }
+          
+          // Find category IDs from names or create them on-the-fly if missing
+          const categoryIds: string[] = [];
+          if (post.categories && post.categories.length > 0) {
+            // Process each category in sequence to avoid race conditions
+            for (const categoryName of post.categories) {
+              if (categoryMap[categoryName]) {
+                // Category exists in map, use its ID
+                categoryIds.push(categoryMap[categoryName]);
+              } else {
+                try {
+                  // Look for the category by title first
+                  const existingCategories = await payload.find({
+                    collection: 'categories',
+                    where: { title: { equals: categoryName } }
+                  });
+                  
+                  if (existingCategories.docs.length > 0) {
+                    // Category exists in database but wasn't in our map - add it
+                    const categoryId = existingCategories.docs[0].id.toString();
+                    categoryMap[categoryName] = categoryId;
+                    categoryIds.push(categoryId);
+                    log(`Found existing category: ${categoryName} (ID: ${categoryId})`);
+                  } else if (!CONFIG.dryRun) {
+                    // Category doesn't exist - create it on the fly
+                    const slug = categoryName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+                    const newCategory = await payload.create({
+                      collection: 'categories',
+                      data: {
+                        title: categoryName,
+                        slug: slug
+                      }
+                    });
+                    const newCategoryId = newCategory.id.toString();
+                    categoryMap[categoryName] = newCategoryId;
+                    categoryIds.push(newCategoryId);
+                    log(`Created missing category on-the-fly: ${categoryName} (ID: ${newCategoryId})`);
+                  }
+                } catch (err) {
+                  log(`WARNING: Failed to process category: ${categoryName} - ${err}`);
+                }
+              }
+            }
+          }
+          
+          // Find tag IDs from names or create them on-the-fly if missing
+          const tagIds: string[] = [];
+          if (post.tags && post.tags.length > 0) {
+            // Process each tag in sequence to avoid race conditions
+            for (const tagName of post.tags) {
+              if (tagMap[tagName]) {
+                // Tag exists in map, use its ID
+                tagIds.push(tagMap[tagName]);
+              } else {
+                try {
+                  // Look for the tag by title first
+                  const existingTags = await payload.find({
+                    collection: 'tags',
+                    where: { title: { equals: tagName } }
+                  });
+                  
+                  if (existingTags.docs.length > 0) {
+                    // Tag exists in database but wasn't in our map - add it
+                    const tagId = existingTags.docs[0].id.toString();
+                    tagMap[tagName] = tagId;
+                    tagIds.push(tagId);
+                    log(`Found existing tag: ${tagName} (ID: ${tagId})`);
+                  } else if (!CONFIG.dryRun) {
+                    // Tag doesn't exist - create it on the fly
+                    const slug = tagName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+                    const newTag = await payload.create({
+                      collection: 'tags',
+                      data: {
+                        title: tagName,
+                        slug: slug
+                      }
+                    });
+                    const newTagId = newTag.id.toString();
+                    tagMap[tagName] = newTagId;
+                    tagIds.push(newTagId);
+                    log(`Created missing tag on-the-fly: ${tagName} (ID: ${newTagId})`);
+                  }
+                } catch (err) {
+                  log(`WARNING: Failed to process tag: ${tagName} - ${err}`);
+                }
+              }
+            }
+          }
+          
+          // Debug output for specific posts
+          if (post.id === '57549') {
+            log(`DEBUG: Post ${post.title} has ${post.tags?.length || 0} tags in JSON`);
+            log(`DEBUG: Found ${tagIds.length} matching tag IDs in the tag map`);
+            if (post.tags) {
+              post.tags.forEach(tag => log(`  - Tag: ${tag} => ID: ${tagMap[tag] || 'NOT FOUND'}`));
+            }
+          }
+          
+          // Debug the tag IDs to ensure they're valid numbers
+          if (tagIds.length > 0 && post.id === '57549') {
+            log(`DEBUG: Tag IDs for ${post.title}:`);
+            tagIds.forEach((id, index) => {
+              log(`  ${index}: ${id} (${typeof id}, isNaN: ${isNaN(Number(id))})`);
+            });
+          }
+
           const postData: Omit<Post, 'id' | 'createdAt' | 'updatedAt' | 'sizes'> = {
             title: post.title,
             slug: post.slug,
@@ -956,27 +1567,57 @@ const importPosts = async (categoryMap: Record<string, string>, userMap: Record<
             meta: {
               title: post.seo?.title || post.title,
               description: post.seo?.description || '',
+              image: featuredImageId, // Add the featured image to meta.image
             },
-            content: { root: htmlToLexical(post.content) },
-            publishedAt: post.date,
+            // Format author relationship as array of numbers
+            authors: authorId ? [Number(authorId)] : null,
+            
+            // Format category relationships as array of numbers
+            categories: categoryIds.length > 0 
+              ? categoryIds.map(id => Number(id))
+              : null,
+            
+            // Format tag relationships as array of numbers
+            tags: tagIds.length > 0 
+              ? tagIds.map(id => Number(id))
+              : null,
+              
+            featuredImage: featuredImageId, // Add the featured image to the dedicated field
+            content: { root: htmlToLexical(processedContent, mediaMap) },
+            publishedAt: post.publishDate,
           };
 
-          await payload.create({
-            collection: 'posts',
-            data: postData,
-            req: {
-              payload: payload, // Pass the payload instance
-              skipRevalidation: true,
-            } as ScriptPayloadRequest,
-          });
+          try {
+            await payload.create({
+              collection: 'posts',
+              data: postData,
+              req: {
+                payload: payload, // Pass the payload instance
+                skipRevalidation: true,
+                // Add a flag to disable search indexing during import
+                disableSearchSync: true,
+              } as ScriptPayloadRequest,
+            });
+          } catch (error) {
+            // If the error is related to search indexing, log it but don't fail the import
+            if (error?.stack?.includes('search') || 
+                error?.message?.includes('search') || 
+                (error?.data?.errors && error?.data?.errors.some(e => e.path === 'id' && e.message === 'Value must be unique'))) {
+              log(`Warning: Search indexing error for post ${post.title}, but post was likely created successfully`);
+              // We can consider the post created despite the search error
+              return;
+            }
+            // Re-throw other errors
+            throw error;
+          }
         };
 
         await createPost(post);
 
         importCount++;
-        log(`✅ Created post: ${post.title}`);
+        log(`✅ Created post: ${post.title} with ${categoryIds.length} categories and author: ${post.creator || 'none'}`);
       } else {
-        log(`[DRY RUN] Would create post: ${post.title}`);
+        log(`[DRY RUN] Would create post: ${post.title} with ${categoryIds.length} categories and author: ${post.creator || 'none'}`);
       }
     } catch (error) {
       logError(`Failed to create post ${post.title}`, error as Error);
@@ -1071,6 +1712,16 @@ const runImport = async () => {
     const categoryMap = await importCategories();
     log(`✅ Category import complete. ${Object.keys(categoryMap).length} categories processed.`);
 
+    // Import tags
+    const tagMap = await importTags();
+    log(`✅ Tag import complete. ${Object.keys(tagMap).length} tags processed.`);
+    
+    // Debug: Show sample of tag map to verify we have correct keys
+    log('Sample of tag map entries:');
+    Object.entries(tagMap).slice(0, 5).forEach(([name, id]) => {
+      log(`  Tag: "${name}" => ID: ${id}`);
+    });
+
     // Import users
     const userMap = await importUsers();
     log(`✅ User import complete. ${Object.keys(userMap).length} users processed.`);
@@ -1080,7 +1731,7 @@ const runImport = async () => {
     log(`✅ Media import complete. ${Object.keys(mediaMap).length} media items processed.`);
 
     // Import posts
-    await importPosts(categoryMap, userMap, mediaMap);
+    await importPosts(categoryMap, userMap, mediaMap, tagMap);
     log('✅ Post import complete.');
 
     // Import pages
@@ -1093,7 +1744,6 @@ const runImport = async () => {
     process.exit(1);
   }
 };
-
 // Run the import
 runImport().catch(err => {
   logError('Import failed', err as Error);

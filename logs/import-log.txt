@@ -1,41 +1,430 @@
---- Migration Log Started at 2025-05-29T17:33:37.574Z ---
+--- Migration Log Started at 2025-05-31T09:56:50.891Z ---
 
-[2025-05-29T17:33:37.576Z] Starting JSON to PayloadCMS import...
-[2025-05-29T17:33:37.580Z] Initializing PayloadCMS...
-[2025-05-29T17:33:39.511Z] ✅ PayloadCMS initialized successfully
-[2025-05-29T17:33:39.512Z] Importing categories...
-[2025-05-29T17:33:42.331Z] ⏭️  Category already exists: Announcements
-[2025-05-29T17:33:43.219Z] ⏭️  Category already exists: Music &amp;Tech
-[2025-05-29T17:33:44.118Z] ⏭️  Category already exists: Music Business
-[2025-05-29T17:33:45.011Z] ⏭️  Category already exists: Music News &amp; Trends
-[2025-05-29T17:33:45.011Z] Imported 0 categories
-[2025-05-29T17:33:45.012Z] ✅ Category import complete. 4 categories processed.
-[2025-05-29T17:33:45.014Z] Importing users...
-[2025-05-29T17:33:45.897Z] ⏭️  User already exists: Chinedum Okerengwor (Email: chinedum@royalti.io)
-[2025-05-29T17:33:46.810Z] ⏭️  User already exists: Adaugo Ugwu (Email: adaugo@royalti.io)
-[2025-05-29T17:33:47.733Z] ⏭️  User already exists: Isaac Newton Akah (Email: newton@royalti.io)
-[2025-05-29T17:33:48.594Z] ⏭️  User already exists: Oluwatunmise Ife-Abidakun (Email: ife@royalti.io)
-[2025-05-29T17:33:49.468Z] ⏭️  User already exists: ahannah (Email: adejugbagbehannah@gmail.co.uk)
-[2025-05-29T17:33:50.322Z] ⏭️  User already exists: Jasmine (Email: jasmine@royalti.io)
-[2025-05-29T17:33:51.201Z] ⏭️  User already exists: thecharlesisidi (Email: thecharlesisidi@gmail.com)
-[2025-05-29T17:33:52.080Z] ⏭️  User already exists: georgepedicel (Email: georgeazih241@gmail.com)
-[2025-05-29T17:33:52.995Z] ⏭️  User already exists: ellapedicel (Email: ella@pedicelmarketing.com)
-[2025-05-29T17:33:52.996Z] Imported 0 users
-[2025-05-29T17:33:52.996Z] ✅ User import complete. 9 users processed.
-[2025-05-29T17:33:52.997Z] Processing media...
-[2025-05-29T17:33:53.923Z] Downloading: https://royalti.io/wp-content/uploads/2018/02/Letterhead.pdf
-[2025-05-29T17:33:55.122Z] Error processing media item 16442 (URL: https://royalti.io/wp-content/uploads/2018/02/Letterhead.pdf):
-[2025-05-29T17:33:55.123Z]   Axios Error: Request failed with status code 500
-[2025-05-29T17:33:55.123Z]   Status: 500
-[2025-05-29T17:33:55.124Z]   Response Data: {"type":"Buffer","data":[60,33,68,79,67,84,89,80,69,32,72,84,77,76,32,80,85,66,76,73,67,32,34,45,47,47,73,69,84,70,47,47,68,84,68,32,72,84,77,76,32,50,46,48,47,47,69,78,34,62,10,60,104,116,109,108,62,60,104,101,97,100,62,10,60,116,105,116,108,101,62,53,48,48,32,73,110,116,101,114,110,97,108,32,83,101,114,118,101,114,32,69,114,114,111,114,60,47,116,105,116,108,101,62,10,60,47,104,101,97,100,62,60,98,111,100,121,62,10,60,104,49,62,73,110,116,101,114,110,97,108,32,83,101,114,118,101,114,32,69,114,114,111,114,60,47,104,49,62,10,60,112,62,84,104,101,32,115,101,114,118,101,114,32,101,110,99,111,117,110,116,101,114,101,100,32,97,110,32,105,110,116,101,114,110,97,108,32,101,114,114,111,114,32,111,114,10,109,105,115,99,111,110,102,105,103,117,114,97,116,105,111,110,32,97,110,100,32,119,97,115,32,117,110,97,98,108,101,32,116,111,32,99,111,109,112,108,101,116,101,10,121,111,117,114,32,114,101,113,117,101,115,116,46,60,47,112,62,10,60,112,62,80,108,101,97,115,101,32,99,111,110,116,97,99,116,32,116,104,101,32,115,101,114,118,101,114,32,97,100,109,105,110,105,115,116,114,97,116,111,114,32,97,116,32,10,32,119,101,98,109,97,115,116,101,114,64,114,111,121,97,108,116,105,46,105,111,32,116,111,32,105,110,102,111,114,109,32,116,104,101,109,32,111,102,32,116,104,101,32,116,105,109,101,32,116,104,105,115,32,101,114,114,111,114,32,111,99,99,117,114,114,101,100,44,10,32,97,110,100,32,116,104,101,32,97,99,116,105,111,110,115,32,121,111,117,32,112,101,114,102,111,114,109,101,100,32,106,117,115,116,32,98,101,102,111,114,101,32,116,104,105,115,32,101,114,114,111,114,46,60,47,112,62,10,60,112,62,77,111,114,101,32,105,110,102,111,114,109,97,116,105,111,110,32,97,98,111,117,116,32,116,104,105,115,32,101,114,114,111,114,32,109,97,121,32,98,101,32,97,118,97,105,108,97,98,108,101,10,105,110,32,116,104,101,32,115,101,114,118,101,114,32,101,114,114,111,114,32,108,111,103,46,60,47,112,62,10,60,112,62,65,100,100,105,116,105,111,110,97,108,108,121,44,32,97,32,53,48,48,32,73,110,116,101,114,110,97,108,32,83,101,114,118,101,114,32,69,114,114,111,114,10,101,114,114,111,114,32,119,97,115,32,101,110,99,111,117,110,116,101,114,101,100,32,119,104,105,108,101,32,116,114,121,105,110,103,32,116,111,32,117,115,101,32,97,110,32,69,114,114,111,114,68,111,99,117,109,101,110,116,32,116,111,32,104,97,110,100,108,101,32,116,104,101,32,114,101,113,117,101,115,116,46,60,47,112,62,10,60,47,98,111,100,121,62,60,47,104,116,109,108,62,10]}
-[2025-05-29T17:33:56.027Z] Downloading: https://royalti.io/wp-content/uploads/2021/01/royalti.io-logo-head-512.png
-[2025-05-29T17:34:01.320Z] ✅ Successfully imported royalti.io-logo-head-512.png as 342 (Payload) from 53263 (Original WP ID)
-[2025-05-29T17:34:02.243Z] Downloading: https://royalti.io/wp-content/uploads/2021/01/cropped-royalti.io-logo-head-512.png
-[2025-05-29T17:34:06.323Z] ✅ Successfully imported cropped-royalti.io-logo-head-512.png as 343 (Payload) from 53264 (Original WP ID)
-[2025-05-29T17:34:07.217Z] Downloading: https://royalti.io/wp-content/uploads/2016/05/royalti.io-logo-head-57.png
-[2025-05-29T17:34:10.667Z] ✅ Successfully imported royalti.io-logo-head-57.png as 344 (Payload) from 53267 (Original WP ID)
-[2025-05-29T17:34:11.538Z] Downloading: https://royalti.io/wp-content/uploads/2016/05/royalti.io-logo-head-white-57.png
-[2025-05-29T17:34:14.716Z] ✅ Successfully imported royalti.io-logo-head-white-57.png as 345 (Payload) from 53268 (Original WP ID)
-[2025-05-29T17:34:15.627Z] Downloading: https://royalti.io/wp-content/uploads/2016/05/royalti.io-logo-240x60-1.png
-[2025-05-29T17:34:19.309Z] ✅ Successfully imported royalti.io-logo-240x60-1.png as 346 (Payload) from 53271 (Original WP ID)
-[2025-05-29T17:34:20.286Z] Downloading: https://royalti.io/wp-content/uploads/2016/05/royalti.io-logo-white-240x60-1.png
+[2025-05-31T09:56:50.898Z] Starting JSON to PayloadCMS import...
+[2025-05-31T09:56:50.906Z] Initializing PayloadCMS...
+[2025-05-31T09:56:53.750Z] ✅ PayloadCMS initialized successfully
+[2025-05-31T09:56:53.753Z] Importing categories...
+[2025-05-31T09:56:57.477Z] ⏭️  Category already exists: Announcements
+[2025-05-31T09:56:58.211Z] ⏭️  Category already exists: Music &amp;Tech
+[2025-05-31T09:56:59.020Z] ⏭️  Category already exists: Music Business
+[2025-05-31T09:56:59.749Z] ⏭️  Category already exists: Music News &amp; Trends
+[2025-05-31T09:56:59.751Z] Imported 0 categories
+[2025-05-31T09:56:59.752Z] ✅ Category import complete. 4 categories processed.
+[2025-05-31T09:56:59.754Z] Importing tags...
+[2025-05-31T09:57:00.813Z] ⏭️  Tag already exists: '70s
+[2025-05-31T09:57:01.961Z] ⏭️  Tag already exists: #BurnaBoy #ToniBraxton #Royalties #Spilts #Royalti #MusicBusiness
+[2025-05-31T09:57:02.695Z] ⏭️  Tag already exists: #concert
+[2025-05-31T09:57:03.625Z] ⏭️  Tag already exists: #promoter
+[2025-05-31T09:57:04.348Z] ⏭️  Tag already exists: #Royalti
+[2025-05-31T09:57:05.167Z] ⏭️  Tag already exists: #Spilts
+[2025-05-31T09:57:07.036Z] ⏭️  Tag already exists: #tour
+[2025-05-31T09:57:07.830Z] ⏭️  Tag already exists: 2000s
+[2025-05-31T09:57:08.869Z] ⏭️  Tag already exists: 2024
+[2025-05-31T09:57:09.722Z] ⏭️  Tag already exists: 2025
+[2025-05-31T09:57:10.510Z] ⏭️  Tag already exists: accounting
+[2025-05-31T09:57:11.543Z] ⏭️  Tag already exists: afrobeats
+[2025-05-31T09:57:12.342Z] ⏭️  Tag already exists: ai
+[2025-05-31T09:57:13.054Z] ⏭️  Tag already exists: AI in music production
+[2025-05-31T09:57:14.856Z] ⏭️  Tag already exists: analytics
+[2025-05-31T09:57:16.441Z] ⏭️  Tag already exists: artificial intelligence
+[2025-05-31T09:57:17.498Z] ⏭️  Tag already exists: artist
+[2025-05-31T09:57:18.395Z] ⏭️  Tag already exists: artist manager
+[2025-05-31T09:57:19.057Z] ⏭️  Tag already exists: artiste
+[2025-05-31T09:57:19.843Z] ⏭️  Tag already exists: Asake
+[2025-05-31T09:57:20.515Z] ⏭️  Tag already exists: asset
+[2025-05-31T09:57:21.483Z] ⏭️  Tag already exists: Ayra Starr
+[2025-05-31T09:57:22.144Z] ⏭️  Tag already exists: bao
+[2025-05-31T09:57:22.879Z] ⏭️  Tag already exists: beta
+[2025-05-31T09:57:23.659Z] ⏭️  Tag already exists: Blockchain
+[2025-05-31T09:57:24.456Z] ⏭️  Tag already exists: burna boy
+[2025-05-31T09:57:25.171Z] ⏭️  Tag already exists: Catalog management
+[2025-05-31T09:57:25.954Z] ⏭️  Tag already exists: catalogue management
+[2025-05-31T09:57:26.723Z] ⏭️  Tag already exists: cchub
+[2025-05-31T09:57:27.748Z] ⏭️  Tag already exists: cesp
+[2025-05-31T09:57:28.463Z] ⏭️  Tag already exists: ChatGPT
+[2025-05-31T09:57:29.616Z] ⏭️  Tag already exists: cloud
+[2025-05-31T09:57:30.389Z] ⏭️  Tag already exists: co creation hub
+[2025-05-31T09:57:31.241Z] ⏭️  Tag already exists: collaboration agreement
+[2025-05-31T09:57:32.263Z] ⏭️  Tag already exists: conference
+[2025-05-31T09:57:33.038Z] ⏭️  Tag already exists: content administrator
+[2025-05-31T09:57:33.847Z] ⏭️  Tag already exists: copyrights
+[2025-05-31T09:57:34.634Z] ⏭️  Tag already exists: copyrights in Nigeria
+[2025-05-31T09:57:35.533Z] ⏭️  Tag already exists: davido
+[2025-05-31T09:57:36.437Z] ⏭️  Tag already exists: demo
+[2025-05-31T09:57:37.198Z] ⏭️  Tag already exists: digital distribution
+[2025-05-31T09:57:37.963Z] ⏭️  Tag already exists: financial management
+[2025-05-31T09:57:38.888Z] ⏭️  Tag already exists: glossary
+[2025-05-31T09:57:39.507Z] ⏭️  Tag already exists: grammys
+[2025-05-31T09:57:40.265Z] ⏭️  Tag already exists: immersive tech
+[2025-05-31T09:57:41.156Z] ⏭️  Tag already exists: independent artists
+[2025-05-31T09:57:41.885Z] ⏭️  Tag already exists: intellectual property
+[2025-05-31T09:57:42.639Z] ⏭️  Tag already exists: international collaborations
+[2025-05-31T09:57:43.376Z] ⏭️  Tag already exists: launch
+[2025-05-31T09:57:45.019Z] ⏭️  Tag already exists: licensing
+[2025-05-31T09:57:46.766Z] ⏭️  Tag already exists: music
+[2025-05-31T09:57:47.561Z] ⏭️  Tag already exists: music &amp; tech space
+[2025-05-31T09:57:48.625Z] ⏭️  Tag already exists: music business
+[2025-05-31T09:57:50.176Z] ⏭️  Tag already exists: music catalogue
+[2025-05-31T09:57:50.852Z] ⏭️  Tag already exists: music collaboration
+[2025-05-31T09:57:51.659Z] ⏭️  Tag already exists: music contracts
+[2025-05-31T09:57:52.560Z] ⏭️  Tag already exists: music feature
+[2025-05-31T09:57:53.215Z] ⏭️  Tag already exists: music licensing
+[2025-05-31T09:57:53.887Z] ⏭️  Tag already exists: music professionals
+[2025-05-31T09:57:54.651Z] ⏭️  Tag already exists: music royalties
+[2025-05-31T09:57:55.412Z] ⏭️  Tag already exists: music royaties
+[2025-05-31T09:57:57.037Z] ⏭️  Tag already exists: music tech
+[2025-05-31T09:57:57.687Z] ⏭️  Tag already exists: Music Tech Innovation Challenge
+[2025-05-31T09:57:58.448Z] ⏭️  Tag already exists: music-tech innovation challenge 2020
+[2025-05-31T09:57:59.204Z] ⏭️  Tag already exists: mvp
+[2025-05-31T09:57:59.955Z] ⏭️  Tag already exists: Nigeria Music Industry
+[2025-05-31T09:58:00.717Z] ⏭️  Tag already exists: Nigerian afrobeat
+[2025-05-31T09:58:01.476Z] ⏭️  Tag already exists: Nigerian artists
+[2025-05-31T09:58:02.237Z] ⏭️  Tag already exists: Nigerian female artist
+[2025-05-31T09:58:02.998Z] ⏭️  Tag already exists: Nigerian music
+[2025-05-31T09:58:03.873Z] ⏭️  Tag already exists: Nigerian music 2000s
+[2025-05-31T09:58:04.706Z] ⏭️  Tag already exists: Nigerian music history
+[2025-05-31T09:58:06.424Z] ⏭️  Tag already exists: Nigerian music in the '60s
+[2025-05-31T09:58:07.577Z] ⏭️  Tag already exists: Nigerian music in the '70s
+[2025-05-31T09:58:08.314Z] ⏭️  Tag already exists: nostalgis
+[2025-05-31T09:58:09.047Z] ⏭️  Tag already exists: older music
+[2025-05-31T09:58:09.857Z] ⏭️  Tag already exists: oldies
+[2025-05-31T09:58:10.565Z] ⏭️  Tag already exists: paga
+[2025-05-31T09:58:11.325Z] ⏭️  Tag already exists: pitch
+[2025-05-31T09:58:12.085Z] ⏭️  Tag already exists: product
+[2025-05-31T09:58:12.847Z] ⏭️  Tag already exists: record label
+[2025-05-31T09:58:13.696Z] ⏭️  Tag already exists: rema
+[2025-05-31T09:58:14.773Z] ⏭️  Tag already exists: royalti.io
+[2025-05-31T09:58:15.511Z] ⏭️  Tag already exists: royalties
+[2025-05-31T09:58:16.418Z] ⏭️  Tag already exists: royalty
+[2025-05-31T09:58:17.192Z] ⏭️  Tag already exists: royalty accounting
+[2025-05-31T09:58:17.995Z] ⏭️  Tag already exists: Royalty management
+[2025-05-31T09:58:18.665Z] ⏭️  Tag already exists: royalty manager
+[2025-05-31T09:58:19.340Z] ⏭️  Tag already exists: Royalty tracking
+[2025-05-31T09:58:20.107Z] ⏭️  Tag already exists: Singles
+[2025-05-31T09:58:20.831Z] ⏭️  Tag already exists: social media
+[2025-05-31T09:58:21.598Z] ⏭️  Tag already exists: songwriting
+[2025-05-31T09:58:22.488Z] ⏭️  Tag already exists: split sheet
+[2025-05-31T09:58:23.498Z] ⏭️  Tag already exists: spotify
+[2025-05-31T09:58:24.822Z] ⏭️  Tag already exists: streaming
+[2025-05-31T09:58:25.562Z] ⏭️  Tag already exists: streaming fraud
+[2025-05-31T09:58:26.281Z] ⏭️  Tag already exists: Tems
+[2025-05-31T09:58:27.058Z] ⏭️  Tag already exists: The Headies 2025
+[2025-05-31T09:58:27.709Z] ⏭️  Tag already exists: TikTok made me famous
+[2025-05-31T09:58:28.564Z] ⏭️  Tag already exists: tiwa savage
+[2025-05-31T09:58:29.261Z] ⏭️  Tag already exists: tyla
+[2025-05-31T09:58:30.049Z] ⏭️  Tag already exists: update
+[2025-05-31T09:58:30.982Z] ⏭️  Tag already exists: updates
+[2025-05-31T09:58:32.322Z] ⏭️  Tag already exists: virtual reality
+[2025-05-31T09:58:33.038Z] ⏭️  Tag already exists: wizkid
+[2025-05-31T09:58:33.039Z] Imported 0 tags
+[2025-05-31T09:58:33.039Z] ✅ Tag import complete. 105 tags processed.
+[2025-05-31T09:58:33.040Z] Sample of tag map entries:
+[2025-05-31T09:58:33.041Z]   Tag: "2024" => ID: 9
+[2025-05-31T09:58:33.042Z]   Tag: "2025" => ID: 10
+[2025-05-31T09:58:33.043Z]   Tag: "'70s" => ID: 1
+[2025-05-31T09:58:33.043Z]   Tag: "#BurnaBoy #ToniBraxton #Royalties #Spilts #Royalti #MusicBusiness" => ID: 2
+[2025-05-31T09:58:33.044Z]   Tag: "#concert" => ID: 3
+[2025-05-31T09:58:33.045Z] Importing users...
+[2025-05-31T09:58:33.744Z] ⏭️  User already exists: Chinedum Okerengwor (Email: chinedum@royalti.io)
+[2025-05-31T09:58:34.507Z] ⏭️  User already exists: Adaugo Ugwu (Email: adaugo@royalti.io)
+[2025-05-31T09:58:35.292Z] ⏭️  User already exists: Isaac Newton Akah (Email: newton@royalti.io)
+[2025-05-31T09:58:36.031Z] ⏭️  User already exists: Oluwatunmise Ife-Abidakun (Email: ife@royalti.io)
+[2025-05-31T09:58:36.920Z] ⏭️  User already exists: ahannah (Email: adejugbagbehannah@gmail.co.uk)
+[2025-05-31T09:58:37.570Z] ⏭️  User already exists: Jasmine (Email: jasmine@royalti.io)
+[2025-05-31T09:58:38.257Z] ⏭️  User already exists: thecharlesisidi (Email: thecharlesisidi@gmail.com)
+[2025-05-31T09:58:38.911Z] ⏭️  User already exists: georgepedicel (Email: georgeazih241@gmail.com)
+[2025-05-31T09:58:39.610Z] ⏭️  User already exists: ellapedicel (Email: ella@pedicelmarketing.com)
+[2025-05-31T09:58:39.611Z] Imported 0 users
+[2025-05-31T09:58:39.612Z] ✅ User import complete. 9 users processed.
+[2025-05-31T09:58:39.614Z] Processing media...
+[2025-05-31T09:58:40.252Z] Downloading: https://royalti.io/wp-content/uploads/2018/02/Letterhead.pdf
+[2025-05-31T09:58:41.609Z] Error processing media item 16442 (URL: https://royalti.io/wp-content/uploads/2018/02/Letterhead.pdf):
+[2025-05-31T09:58:41.610Z]   Axios Error: Request failed with status code 500
+[2025-05-31T09:58:41.611Z]   Status: 500
+[2025-05-31T09:58:41.611Z]   Response Data: {"type":"Buffer","data":[60,33,68,79,67,84,89,80,69,32,72,84,77,76,32,80,85,66,76,73,67,32,34,45,47,47,73,69,84,70,47,47,68,84,68,32,72,84,77,76,32,50,46,48,47,47,69,78,34,62,10,60,104,116,109,108,62,60,104,101,97,100,62,10,60,116,105,116,108,101,62,53,48,48,32,73,110,116,101,114,110,97,108,32,83,101,114,118,101,114,32,69,114,114,111,114,60,47,116,105,116,108,101,62,10,60,47,104,101,97,100,62,60,98,111,100,121,62,10,60,104,49,62,73,110,116,101,114,110,97,108,32,83,101,114,118,101,114,32,69,114,114,111,114,60,47,104,49,62,10,60,112,62,84,104,101,32,115,101,114,118,101,114,32,101,110,99,111,117,110,116,101,114,101,100,32,97,110,32,105,110,116,101,114,110,97,108,32,101,114,114,111,114,32,111,114,10,109,105,115,99,111,110,102,105,103,117,114,97,116,105,111,110,32,97,110,100,32,119,97,115,32,117,110,97,98,108,101,32,116,111,32,99,111,109,112,108,101,116,101,10,121,111,117,114,32,114,101,113,117,101,115,116,46,60,47,112,62,10,60,112,62,80,108,101,97,115,101,32,99,111,110,116,97,99,116,32,116,104,101,32,115,101,114,118,101,114,32,97,100,109,105,110,105,115,116,114,97,116,111,114,32,97,116,32,10,32,119,101,98,109,97,115,116,101,114,64,114,111,121,97,108,116,105,46,105,111,32,116,111,32,105,110,102,111,114,109,32,116,104,101,109,32,111,102,32,116,104,101,32,116,105,109,101,32,116,104,105,115,32,101,114,114,111,114,32,111,99,99,117,114,114,101,100,44,10,32,97,110,100,32,116,104,101,32,97,99,116,105,111,110,115,32,121,111,117,32,112,101,114,102,111,114,109,101,100,32,106,117,115,116,32,98,101,102,111,114,101,32,116,104,105,115,32,101,114,114,111,114,46,60,47,112,62,10,60,112,62,77,111,114,101,32,105,110,102,111,114,109,97,116,105,111,110,32,97,98,111,117,116,32,116,104,105,115,32,101,114,114,111,114,32,109,97,121,32,98,101,32,97,118,97,105,108,97,98,108,101,10,105,110,32,116,104,101,32,115,101,114,118,101,114,32,101,114,114,111,114,32,108,111,103,46,60,47,112,62,10,60,112,62,65,100,100,105,116,105,111,110,97,108,108,121,44,32,97,32,53,48,48,32,73,110,116,101,114,110,97,108,32,83,101,114,118,101,114,32,69,114,114,111,114,10,101,114,114,111,114,32,119,97,115,32,101,110,99,111,117,110,116,101,114,101,100,32,119,104,105,108,101,32,116,114,121,105,110,103,32,116,111,32,117,115,101,32,97,110,32,69,114,114,111,114,68,111,99,117,109,101,110,116,32,116,111,32,104,97,110,100,108,101,32,116,104,101,32,114,101,113,117,101,115,116,46,60,47,112,62,10,60,47,98,111,100,121,62,60,47,104,116,109,108,62,10]}
+[2025-05-31T09:58:42.914Z] ⏭️ Media item 53263 (WP ID) already exists as 389 (Payload ID). Skipping download.
+[2025-05-31T09:58:44.270Z] ⏭️ Media item 53264 (WP ID) already exists as 390 (Payload ID). Skipping download.
+[2025-05-31T09:58:45.588Z] ⏭️ Media item 53267 (WP ID) already exists as 391 (Payload ID). Skipping download.
+[2025-05-31T09:58:47.242Z] ⏭️ Media item 53268 (WP ID) already exists as 392 (Payload ID). Skipping download.
+[2025-05-31T09:58:48.675Z] ⏭️ Media item 53271 (WP ID) already exists as 393 (Payload ID). Skipping download.
+[2025-05-31T09:58:50.305Z] ⏭️ Media item 53272 (WP ID) already exists as 394 (Payload ID). Skipping download.
+[2025-05-31T09:58:51.729Z] ⏭️ Media item 53273 (WP ID) already exists as 395 (Payload ID). Skipping download.
+[2025-05-31T09:58:53.489Z] ⏭️ Media item 53274 (WP ID) already exists as 396 (Payload ID). Skipping download.
+[2025-05-31T09:58:54.811Z] ⏭️ Media item 53722 (WP ID) already exists as 397 (Payload ID). Skipping download.
+[2025-05-31T09:58:56.167Z] ⏭️ Media item 53781 (WP ID) already exists as 398 (Payload ID). Skipping download.
+[2025-05-31T09:58:57.505Z] ⏭️ Media item 53783 (WP ID) already exists as 399 (Payload ID). Skipping download.
+[2025-05-31T09:58:58.808Z] ⏭️ Media item 53784 (WP ID) already exists as 400 (Payload ID). Skipping download.
+[2025-05-31T09:59:00.112Z] ⏭️ Media item 53789 (WP ID) already exists as 401 (Payload ID). Skipping download.
+[2025-05-31T09:59:01.494Z] ⏭️ Media item 53826 (WP ID) already exists as 402 (Payload ID). Skipping download.
+[2025-05-31T09:59:02.826Z] ⏭️ Media item 53855 (WP ID) already exists as 403 (Payload ID). Skipping download.
+[2025-05-31T09:59:04.155Z] ⏭️ Media item 53861 (WP ID) already exists as 404 (Payload ID). Skipping download.
+[2025-05-31T09:59:05.472Z] ⏭️ Media item 53872 (WP ID) already exists as 405 (Payload ID). Skipping download.
+[2025-05-31T09:59:06.859Z] ⏭️ Media item 53900 (WP ID) already exists as 406 (Payload ID). Skipping download.
+[2025-05-31T09:59:08.300Z] ⏭️ Media item 53921 (WP ID) already exists as 407 (Payload ID). Skipping download.
+[2025-05-31T09:59:09.585Z] ⏭️ Media item 53941 (WP ID) already exists as 408 (Payload ID). Skipping download.
+[2025-05-31T09:59:10.969Z] ⏭️ Media item 53952 (WP ID) already exists as 409 (Payload ID). Skipping download.
+[2025-05-31T09:59:12.532Z] ⏭️ Media item 54279 (WP ID) already exists as 410 (Payload ID). Skipping download.
+[2025-05-31T09:59:13.801Z] ⏭️ Media item 54285 (WP ID) already exists as 411 (Payload ID). Skipping download.
+[2025-05-31T09:59:15.106Z] ⏭️ Media item 54286 (WP ID) already exists as 412 (Payload ID). Skipping download.
+[2025-05-31T09:59:16.410Z] ⏭️ Media item 54556 (WP ID) already exists as 413 (Payload ID). Skipping download.
+[2025-05-31T09:59:17.729Z] ⏭️ Media item 54566 (WP ID) already exists as 414 (Payload ID). Skipping download.
+[2025-05-31T09:59:19.011Z] ⏭️ Media item 55567 (WP ID) already exists as 415 (Payload ID). Skipping download.
+[2025-05-31T09:59:20.344Z] ⏭️ Media item 55568 (WP ID) already exists as 416 (Payload ID). Skipping download.
+[2025-05-31T09:59:21.682Z] ⏭️ Media item 55767 (WP ID) already exists as 417 (Payload ID). Skipping download.
+[2025-05-31T09:59:23.098Z] ⏭️ Media item 55773 (WP ID) already exists as 418 (Payload ID). Skipping download.
+[2025-05-31T09:59:24.413Z] ⏭️ Media item 56352 (WP ID) already exists as 419 (Payload ID). Skipping download.
+[2025-05-31T09:59:25.699Z] ⏭️ Media item 56466 (WP ID) already exists as 420 (Payload ID). Skipping download.
+[2025-05-31T09:59:26.971Z] ⏭️ Media item 56660 (WP ID) already exists as 421 (Payload ID). Skipping download.
+[2025-05-31T09:59:28.324Z] ⏭️ Media item 56865 (WP ID) already exists as 422 (Payload ID). Skipping download.
+[2025-05-31T09:59:29.622Z] ⏭️ Media item 56866 (WP ID) already exists as 423 (Payload ID). Skipping download.
+[2025-05-31T09:59:31.274Z] ⏭️ Media item 56925 (WP ID) already exists as 424 (Payload ID). Skipping download.
+[2025-05-31T09:59:32.616Z] ⏭️ Media item 56926 (WP ID) already exists as 425 (Payload ID). Skipping download.
+[2025-05-31T09:59:33.996Z] ⏭️ Media item 56927 (WP ID) already exists as 426 (Payload ID). Skipping download.
+[2025-05-31T09:59:35.389Z] ⏭️ Media item 57116 (WP ID) already exists as 427 (Payload ID). Skipping download.
+[2025-05-31T09:59:39.144Z] ⏭️ Media item 57196 (WP ID) already exists as 428 (Payload ID). Skipping download.
+[2025-05-31T09:59:40.448Z] ⏭️ Media item 57201 (WP ID) already exists as 429 (Payload ID). Skipping download.
+[2025-05-31T09:59:41.738Z] ⏭️ Media item 57394 (WP ID) already exists as 430 (Payload ID). Skipping download.
+[2025-05-31T09:59:43.019Z] ⏭️ Media item 57404 (WP ID) already exists as 431 (Payload ID). Skipping download.
+[2025-05-31T09:59:44.337Z] ⏭️ Media item 57465 (WP ID) already exists as 432 (Payload ID). Skipping download.
+[2025-05-31T09:59:45.657Z] ⏭️ Media item 57467 (WP ID) already exists as 433 (Payload ID). Skipping download.
+[2025-05-31T09:59:46.948Z] ⏭️ Media item 57509 (WP ID) already exists as 434 (Payload ID). Skipping download.
+[2025-05-31T09:59:48.211Z] ⏭️ Media item 57514 (WP ID) already exists as 435 (Payload ID). Skipping download.
+[2025-05-31T09:59:49.507Z] ⏭️ Media item 57552 (WP ID) already exists as 436 (Payload ID). Skipping download.
+[2025-05-31T09:59:50.820Z] ⏭️ Media item 57565 (WP ID) already exists as 437 (Payload ID). Skipping download.
+[2025-05-31T09:59:52.106Z] ⏭️ Media item 57593 (WP ID) already exists as 438 (Payload ID). Skipping download.
+[2025-05-31T09:59:53.458Z] ⏭️ Media item 57598 (WP ID) already exists as 439 (Payload ID). Skipping download.
+[2025-05-31T09:59:54.779Z] ⏭️ Media item 57609 (WP ID) already exists as 440 (Payload ID). Skipping download.
+[2025-05-31T09:59:56.085Z] ⏭️ Media item 57629 (WP ID) already exists as 441 (Payload ID). Skipping download.
+[2025-05-31T09:59:57.419Z] ⏭️ Media item 57630 (WP ID) already exists as 442 (Payload ID). Skipping download.
+[2025-05-31T09:59:58.714Z] ⏭️ Media item 57641 (WP ID) already exists as 443 (Payload ID). Skipping download.
+[2025-05-31T10:00:00.018Z] ⏭️ Media item 57698 (WP ID) already exists as 444 (Payload ID). Skipping download.
+[2025-05-31T10:00:01.299Z] ⏭️ Media item 57716 (WP ID) already exists as 445 (Payload ID). Skipping download.
+[2025-05-31T10:00:02.573Z] ⏭️ Media item 57719 (WP ID) already exists as 446 (Payload ID). Skipping download.
+[2025-05-31T10:00:03.907Z] ⏭️ Media item 57726 (WP ID) already exists as 447 (Payload ID). Skipping download.
+[2025-05-31T10:00:05.217Z] ⏭️ Media item 57727 (WP ID) already exists as 448 (Payload ID). Skipping download.
+[2025-05-31T10:00:06.497Z] ⏭️ Media item 57739 (WP ID) already exists as 449 (Payload ID). Skipping download.
+[2025-05-31T10:00:07.770Z] ⏭️ Media item 57745 (WP ID) already exists as 450 (Payload ID). Skipping download.
+[2025-05-31T10:00:09.043Z] ⏭️ Media item 57751 (WP ID) already exists as 451 (Payload ID). Skipping download.
+[2025-05-31T10:00:10.344Z] ⏭️ Media item 57752 (WP ID) already exists as 452 (Payload ID). Skipping download.
+[2025-05-31T10:00:11.652Z] ⏭️ Media item 57753 (WP ID) already exists as 453 (Payload ID). Skipping download.
+[2025-05-31T10:00:12.930Z] ⏭️ Media item 57762 (WP ID) already exists as 454 (Payload ID). Skipping download.
+[2025-05-31T10:00:14.260Z] ⏭️ Media item 57769 (WP ID) already exists as 455 (Payload ID). Skipping download.
+[2025-05-31T10:00:15.586Z] ⏭️ Media item 57776 (WP ID) already exists as 456 (Payload ID). Skipping download.
+[2025-05-31T10:00:16.930Z] ⏭️ Media item 57777 (WP ID) already exists as 457 (Payload ID). Skipping download.
+[2025-05-31T10:00:18.279Z] ⏭️ Media item 57778 (WP ID) already exists as 458 (Payload ID). Skipping download.
+[2025-05-31T10:00:19.661Z] ⏭️ Media item 57779 (WP ID) already exists as 459 (Payload ID). Skipping download.
+[2025-05-31T10:00:21.025Z] ⏭️ Media item 57780 (WP ID) already exists as 460 (Payload ID). Skipping download.
+[2025-05-31T10:00:22.356Z] ⏭️ Media item 57796 (WP ID) already exists as 461 (Payload ID). Skipping download.
+[2025-05-31T10:00:23.723Z] ⏭️ Media item 57840 (WP ID) already exists as 462 (Payload ID). Skipping download.
+[2025-05-31T10:00:25.051Z] ⏭️ Media item 57850 (WP ID) already exists as 463 (Payload ID). Skipping download.
+[2025-05-31T10:00:26.388Z] ⏭️ Media item 57880 (WP ID) already exists as 464 (Payload ID). Skipping download.
+[2025-05-31T10:00:27.973Z] ⏭️ Media item 57883 (WP ID) already exists as 465 (Payload ID). Skipping download.
+[2025-05-31T10:00:30.507Z] ⏭️ Media item 57889 (WP ID) already exists as 466 (Payload ID). Skipping download.
+[2025-05-31T10:00:34.283Z] ⏭️ Media item 57893 (WP ID) already exists as 467 (Payload ID). Skipping download.
+[2025-05-31T10:00:36.376Z] ⏭️ Media item 57895 (WP ID) already exists as 468 (Payload ID). Skipping download.
+[2025-05-31T10:00:38.341Z] ⏭️ Media item 57898 (WP ID) already exists as 469 (Payload ID). Skipping download.
+[2025-05-31T10:00:39.734Z] ⏭️ Media item 57899 (WP ID) already exists as 470 (Payload ID). Skipping download.
+[2025-05-31T10:00:41.063Z] ⏭️ Media item 57900 (WP ID) already exists as 471 (Payload ID). Skipping download.
+[2025-05-31T10:00:42.366Z] ⏭️ Media item 57901 (WP ID) already exists as 472 (Payload ID). Skipping download.
+[2025-05-31T10:00:43.680Z] ⏭️ Media item 57902 (WP ID) already exists as 473 (Payload ID). Skipping download.
+[2025-05-31T10:00:45.019Z] ⏭️ Media item 57922 (WP ID) already exists as 474 (Payload ID). Skipping download.
+[2025-05-31T10:00:46.936Z] ⏭️ Media item 57929 (WP ID) already exists as 475 (Payload ID). Skipping download.
+[2025-05-31T10:00:48.663Z] ⏭️ Media item 57942 (WP ID) already exists as 476 (Payload ID). Skipping download.
+[2025-05-31T10:00:50.002Z] ⏭️ Media item 57943 (WP ID) already exists as 477 (Payload ID). Skipping download.
+[2025-05-31T10:00:51.596Z] ⏭️ Media item 57944 (WP ID) already exists as 478 (Payload ID). Skipping download.
+[2025-05-31T10:00:53.052Z] ⏭️ Media item 57945 (WP ID) already exists as 479 (Payload ID). Skipping download.
+[2025-05-31T10:00:54.904Z] ⏭️ Media item 57946 (WP ID) already exists as 480 (Payload ID). Skipping download.
+[2025-05-31T10:00:56.230Z] ⏭️ Media item 57947 (WP ID) already exists as 481 (Payload ID). Skipping download.
+[2025-05-31T10:00:57.574Z] ⏭️ Media item 57948 (WP ID) already exists as 482 (Payload ID). Skipping download.
+[2025-05-31T10:00:58.877Z] ⏭️ Media item 57949 (WP ID) already exists as 483 (Payload ID). Skipping download.
+[2025-05-31T10:01:00.174Z] ⏭️ Media item 57950 (WP ID) already exists as 484 (Payload ID). Skipping download.
+[2025-05-31T10:01:01.493Z] ⏭️ Media item 57955 (WP ID) already exists as 485 (Payload ID). Skipping download.
+[2025-05-31T10:01:02.829Z] ⏭️ Media item 57957 (WP ID) already exists as 486 (Payload ID). Skipping download.
+[2025-05-31T10:01:04.150Z] ⏭️ Media item 57958 (WP ID) already exists as 487 (Payload ID). Skipping download.
+[2025-05-31T10:01:05.464Z] ⏭️ Media item 57963 (WP ID) already exists as 488 (Payload ID). Skipping download.
+[2025-05-31T10:01:06.766Z] ⏭️ Media item 57970 (WP ID) already exists as 489 (Payload ID). Skipping download.
+[2025-05-31T10:01:08.110Z] ⏭️ Media item 57974 (WP ID) already exists as 490 (Payload ID). Skipping download.
+[2025-05-31T10:01:09.433Z] ⏭️ Media item 58026 (WP ID) already exists as 491 (Payload ID). Skipping download.
+[2025-05-31T10:01:10.876Z] ⏭️ Media item 58027 (WP ID) already exists as 492 (Payload ID). Skipping download.
+[2025-05-31T10:01:12.175Z] ⏭️ Media item 58028 (WP ID) already exists as 493 (Payload ID). Skipping download.
+[2025-05-31T10:01:13.509Z] ⏭️ Media item 58035 (WP ID) already exists as 494 (Payload ID). Skipping download.
+[2025-05-31T10:01:14.788Z] ⏭️ Media item 58036 (WP ID) already exists as 495 (Payload ID). Skipping download.
+[2025-05-31T10:01:16.150Z] ⏭️ Media item 58037 (WP ID) already exists as 496 (Payload ID). Skipping download.
+[2025-05-31T10:01:17.469Z] ⏭️ Media item 58038 (WP ID) already exists as 497 (Payload ID). Skipping download.
+[2025-05-31T10:01:18.861Z] ⏭️ Media item 58050 (WP ID) already exists as 498 (Payload ID). Skipping download.
+[2025-05-31T10:01:20.155Z] ⏭️ Media item 58051 (WP ID) already exists as 499 (Payload ID). Skipping download.
+[2025-05-31T10:01:21.475Z] ⏭️ Media item 58149 (WP ID) already exists as 500 (Payload ID). Skipping download.
+[2025-05-31T10:01:23.268Z] ⏭️ Media item 58150 (WP ID) already exists as 501 (Payload ID). Skipping download.
+[2025-05-31T10:01:24.625Z] ⏭️ Media item 58151 (WP ID) already exists as 502 (Payload ID). Skipping download.
+[2025-05-31T10:01:25.986Z] ⏭️ Media item 58158 (WP ID) already exists as 503 (Payload ID). Skipping download.
+[2025-05-31T10:01:27.365Z] ⏭️ Media item 58159 (WP ID) already exists as 504 (Payload ID). Skipping download.
+[2025-05-31T10:01:28.674Z] ⏭️ Media item 58162 (WP ID) already exists as 505 (Payload ID). Skipping download.
+[2025-05-31T10:01:30.043Z] ⏭️ Media item 58165 (WP ID) already exists as 506 (Payload ID). Skipping download.
+[2025-05-31T10:01:31.744Z] ⏭️ Media item 58168 (WP ID) already exists as 507 (Payload ID). Skipping download.
+[2025-05-31T10:01:33.503Z] ⏭️ Media item 58169 (WP ID) already exists as 508 (Payload ID). Skipping download.
+[2025-05-31T10:01:35.452Z] ⏭️ Media item 58177 (WP ID) already exists as 509 (Payload ID). Skipping download.
+[2025-05-31T10:01:36.875Z] ⏭️ Media item 58209 (WP ID) already exists as 510 (Payload ID). Skipping download.
+[2025-05-31T10:01:38.354Z] ⏭️ Media item 58212 (WP ID) already exists as 511 (Payload ID). Skipping download.
+[2025-05-31T10:01:39.795Z] ⏭️ Media item 58218 (WP ID) already exists as 512 (Payload ID). Skipping download.
+[2025-05-31T10:01:41.154Z] ⏭️ Media item 58244 (WP ID) already exists as 513 (Payload ID). Skipping download.
+[2025-05-31T10:01:42.544Z] ⏭️ Media item 58245 (WP ID) already exists as 514 (Payload ID). Skipping download.
+[2025-05-31T10:01:43.923Z] ⏭️ Media item 58259 (WP ID) already exists as 515 (Payload ID). Skipping download.
+[2025-05-31T10:01:45.630Z] ⏭️ Media item 58260 (WP ID) already exists as 516 (Payload ID). Skipping download.
+[2025-05-31T10:01:47.134Z] ⏭️ Media item 58261 (WP ID) already exists as 517 (Payload ID). Skipping download.
+[2025-05-31T10:01:48.609Z] ⏭️ Media item 58265 (WP ID) already exists as 518 (Payload ID). Skipping download.
+[2025-05-31T10:01:50.634Z] ⏭️ Media item 58267 (WP ID) already exists as 519 (Payload ID). Skipping download.
+[2025-05-31T10:01:52.227Z] ⏭️ Media item 58277 (WP ID) already exists as 520 (Payload ID). Skipping download.
+[2025-05-31T10:01:54.052Z] ⏭️ Media item 58302 (WP ID) already exists as 521 (Payload ID). Skipping download.
+[2025-05-31T10:01:55.587Z] ⏭️ Media item 58307 (WP ID) already exists as 522 (Payload ID). Skipping download.
+[2025-05-31T10:01:57.082Z] ⏭️ Media item 58312 (WP ID) already exists as 523 (Payload ID). Skipping download.
+[2025-05-31T10:01:58.804Z] ⏭️ Media item 58319 (WP ID) already exists as 524 (Payload ID). Skipping download.
+[2025-05-31T10:02:00.154Z] ⏭️ Media item 58320 (WP ID) already exists as 525 (Payload ID). Skipping download.
+[2025-05-31T10:02:02.012Z] ⏭️ Media item 58334 (WP ID) already exists as 526 (Payload ID). Skipping download.
+[2025-05-31T10:02:03.517Z] ⏭️ Media item 58335 (WP ID) already exists as 527 (Payload ID). Skipping download.
+[2025-05-31T10:02:05.029Z] ⏭️ Media item 57614 (WP ID) already exists as 528 (Payload ID). Skipping download.
+[2025-05-31T10:02:06.655Z] ⏭️ Media item 58345 (WP ID) already exists as 529 (Payload ID). Skipping download.
+[2025-05-31T10:02:08.234Z] ⏭️ Media item 58347 (WP ID) already exists as 530 (Payload ID). Skipping download.
+[2025-05-31T10:02:09.650Z] ⏭️ Media item 58354 (WP ID) already exists as 531 (Payload ID). Skipping download.
+[2025-05-31T10:02:11.203Z] ⏭️ Media item 58364 (WP ID) already exists as 532 (Payload ID). Skipping download.
+[2025-05-31T10:02:12.781Z] ⏭️ Media item 58366 (WP ID) already exists as 533 (Payload ID). Skipping download.
+[2025-05-31T10:02:14.157Z] ⏭️ Media item 58386 (WP ID) already exists as 534 (Payload ID). Skipping download.
+[2025-05-31T10:02:15.618Z] ⏭️ Media item 58391 (WP ID) already exists as 535 (Payload ID). Skipping download.
+[2025-05-31T10:02:17.083Z] ⏭️ Media item 58441 (WP ID) already exists as 536 (Payload ID). Skipping download.
+[2025-05-31T10:02:18.434Z] ⏭️ Media item 58468 (WP ID) already exists as 537 (Payload ID). Skipping download.
+[2025-05-31T10:02:19.725Z] ⏭️ Media item 58480 (WP ID) already exists as 538 (Payload ID). Skipping download.
+[2025-05-31T10:02:21.257Z] ⏭️ Media item 58493 (WP ID) already exists as 539 (Payload ID). Skipping download.
+[2025-05-31T10:02:22.580Z] ⏭️ Media item 58505 (WP ID) already exists as 540 (Payload ID). Skipping download.
+[2025-05-31T10:02:23.971Z] ⏭️ Media item 58525 (WP ID) already exists as 541 (Payload ID). Skipping download.
+[2025-05-31T10:02:25.345Z] ⏭️ Media item 58534 (WP ID) already exists as 542 (Payload ID). Skipping download.
+[2025-05-31T10:02:26.723Z] ⏭️ Media item 58539 (WP ID) already exists as 543 (Payload ID). Skipping download.
+[2025-05-31T10:02:26.724Z] Media import summary: 
+    Successfully imported: 0
+    Skipped (already existing): 155
+    Failed: 1
+    Total processed: 156
+[2025-05-31T10:02:26.725Z] 1 media items failed to import. Please check the logs above for details.
+[2025-05-31T10:02:26.726Z] ✅ Media import complete. 155 media items processed.
+[2025-05-31T10:02:26.728Z] Importing posts...
+[2025-05-31T10:02:29.264Z] ⏭️  Post already exists: Music Distribution in Nigeria: A quick guide for young artiste.
+[2025-05-31T10:02:34.898Z] ✅ Created post: Is Royalti.io the ChatGPT of Music Royalty and Accounting? with 0 categories and author: newton
+[2025-05-31T10:02:40.940Z] ✅ Created post: Royalti.io Music Management Platform: Everything You Need to Know About Split Sheets and Collaboration Agreements with 0 categories and author: thecharlesisidi
+[2025-05-31T10:02:46.164Z] ✅ Created post: Royalti.io Music Management Platform: Everything You Need to Know About Split Sheets and Collaboration Agreements with 0 categories and author: thecharlesisidi
+[2025-05-31T10:02:48.937Z] ⏭️  Post already exists: We were Shortlisted: Join us at the Music-Tech Innovation Challenge 2020 Pitch Event
+[2025-05-31T10:02:49.571Z] Set featured image ID to: 403 from WordPress featured image ID: 53855
+[2025-05-31T10:02:56.343Z] ✅ Created post: 🎉 Royalti.io MVP Launch: Join our Private Beta with 0 categories and author: nedjamez
+[2025-05-31T10:02:57.043Z] Set featured image ID to: 408 from WordPress featured image ID: 53941
+[2025-05-31T10:03:03.558Z] ✅ Created post: Updates: Improved tables and Splits calculation with 0 categories and author: nedjamez
+[2025-05-31T10:03:04.243Z] Set featured image ID to: 407 from WordPress featured image ID: 53921
+[2025-05-31T10:03:10.595Z] ✅ Created post: Updates: User, Artiste, Asset and Product pages with 0 categories and author: nedjamez
+[2025-05-31T10:03:13.298Z] ⏭️  Post already exists: The role of Royalty Managers in a Record Label
+[2025-05-31T10:03:13.955Z] Set featured image ID to: 413 from WordPress featured image ID: 54556
+[2025-05-31T10:03:20.287Z] ✅ Created post: Explaining Split Sheets with 0 categories and author: adaugo
+[2025-05-31T10:03:20.932Z] Set featured image ID to: 415 from WordPress featured image ID: 55567
+[2025-05-31T10:03:27.560Z] ✅ Created post: Updates: Multi-user access for Labels and Distros; Royalty Filters; Accounting and more 📊 with 0 categories and author: nedjamez
+[2025-05-31T10:03:28.245Z] Set featured image ID to: 418 from WordPress featured image ID: 55773
+[2025-05-31T10:03:35.058Z] ✅ Created post: ⚾ We're pitching: Founders Live Lagos - May 2022 - Center Stage Edition with 0 categories and author: nedjamez
+[2025-05-31T10:03:35.874Z] Set featured image ID to: 419 from WordPress featured image ID: 56352
+[2025-05-31T10:03:42.195Z] ✅ Created post: Accounts Automation: 4 benefits of Account Automation in Music Business with 0 categories and author: adaugo
+[2025-05-31T10:03:42.870Z] Set featured image ID to: 420 from WordPress featured image ID: 56466
+[2025-05-31T10:03:49.010Z] ✅ Created post: Star Makers Distribution Partners Royalti.io to Power Music Catalogue and Royalty Management with 0 categories and author: nedjamez
+[2025-05-31T10:03:49.653Z] Set featured image ID to: 421 from WordPress featured image ID: 56660
+[2025-05-31T10:03:56.053Z] ✅ Created post: Record Label Management: The Content Administrators with 0 categories and author: adaugo
+[2025-05-31T10:03:56.753Z] Set featured image ID to: 423 from WordPress featured image ID: 56866
+[2025-05-31T10:04:03.057Z] ✅ Created post: We are Showcasing at the British Council with 0 categories and author: nedjamez
+[2025-05-31T10:04:03.755Z] Set featured image ID to: 426 from WordPress featured image ID: 56927
+[2025-05-31T10:04:10.097Z] ✅ Created post: Burna Boy, Wizkid, Davido - Who Earns More? with 0 categories and author: newton
+[2025-05-31T10:04:13.026Z] ⏭️  Post already exists: Burna Boy's Royalties and Braxton's 'Cut' - Analysing Splits!
+[2025-05-31T10:04:13.649Z] Set featured image ID to: 430 from WordPress featured image ID: 57394
+[2025-05-31T10:04:19.585Z] ✅ Created post: Music Licensing: A Beginner's Guide to Licensing Music with 0 categories and author: ahannah
+[2025-05-31T10:04:20.257Z] Set featured image ID to: 432 from WordPress featured image ID: 57465
+[2025-05-31T10:04:26.401Z] ✅ Created post: 📂 Updates: Royalty File Upload, Bulk Import Assets, Products, Auto set Splits and more with 0 categories and author: nedjamez
+[2025-05-31T10:04:27.095Z] Set featured image ID to: 435 from WordPress featured image ID: 57514
+[2025-05-31T10:04:33.225Z] ✅ Created post: Digital Music Distribution In Nigeria: A Deep Dive with 0 categories and author: ahannah
+[2025-05-31T10:04:33.872Z] Set featured image ID to: 436 from WordPress featured image ID: 57552
+[2025-05-31T10:04:33.877Z] DEBUG: Post Artist Managers: Who They Are and What They Do? has 2 tags in JSON
+[2025-05-31T10:04:33.878Z] DEBUG: Found 2 matching tag IDs in the tag map
+[2025-05-31T10:04:33.879Z]   - Tag: artist manager => ID: 18
+[2025-05-31T10:04:33.880Z]   - Tag: record label => ID: 81
+[2025-05-31T10:04:33.881Z] DEBUG: Tag IDs for Artist Managers: Who They Are and What They Do?:
+[2025-05-31T10:04:33.881Z]   0: 18 (string, isNaN: false)
+[2025-05-31T10:04:33.882Z]   1: 81 (string, isNaN: false)
+[2025-05-31T10:04:40.226Z] ✅ Created post: Artist Managers: Who They Are and What They Do? with 0 categories and author: adaugo
+[2025-05-31T10:04:40.954Z] Set featured image ID to: 437 from WordPress featured image ID: 57565
+[2025-05-31T10:04:47.189Z] ✅ Created post: The Black Panther Soundtrack: Top Five - Nigerian Edition with 0 categories and author: adaugo
+[2025-05-31T10:04:52.522Z] ✅ Created post: Music Royalties, Blockchain &amp; Regulation: Nigeria’s Investment and Securities Act 2025 with 0 categories and author: adaugo
+[2025-05-31T10:04:53.172Z] Set featured image ID to: 439 from WordPress featured image ID: 57598
+[2025-05-31T10:05:00.129Z] ✅ Created post: How Record Labels Make Money with 0 categories and author: cmoife
+[2025-05-31T10:05:00.805Z] Set featured image ID to: 438 from WordPress featured image ID: 57593
+[2025-05-31T10:05:06.897Z] ✅ Created post: Royalti.io API 🚀, Royalty Analyses and more Platform Updates with 0 categories and author: nedjamez
+[2025-05-31T10:05:07.563Z] Set featured image ID to: 440 from WordPress featured image ID: 57609
+[2025-05-31T10:05:14.804Z] ✅ Created post: Music Royalties: All You Need to Know with 0 categories and author: cmoife
+[2025-05-31T10:05:15.460Z] Set featured image ID to: 443 from WordPress featured image ID: 57641
+[2025-05-31T10:05:21.748Z] ✅ Created post: Behind the Asake O2 Academy Brixton Tragedy with 0 categories and author: jasmine
+[2025-05-31T10:05:22.454Z] Set featured image ID to: 444 from WordPress featured image ID: 57698
+[2025-05-31T10:05:28.551Z] ✅ Created post: Our Presentation at Measure of Music 2023 🚀 with 0 categories and author: nedjamez
+[2025-05-31T10:05:29.262Z] Set featured image ID to: 445 from WordPress featured image ID: 57716
+[2025-05-31T10:05:35.741Z] ✅ Created post: Our first Outing 🛸: BAO (META) Conference 2023 with 0 categories and author: nedjamez
+[2025-05-31T10:05:36.402Z] Set featured image ID to: 446 from WordPress featured image ID: 57719
+[2025-05-31T10:05:42.426Z] ✅ Created post: Join us today on X spaces: The Pre-seed Conversations by Founder Institute with 0 categories and author: nedjamez
+[2025-05-31T10:05:43.118Z] Set featured image ID to: 449 from WordPress featured image ID: 57739
+[2025-05-31T10:05:50.163Z] ✅ Created post: Music and Money 101: Financial Management and the Music Business with 0 categories and author: adaugo
+[2025-05-31T10:05:50.972Z] Set featured image ID to: 451 from WordPress featured image ID: 57751
+[2025-05-31T10:05:57.828Z] ✅ Created post: Digital Music Rights: A Deeper Dive Into Digital Music Royalties with 0 categories and author: thecharlesisidi
+[2025-05-31T10:05:58.515Z] Set featured image ID to: 454 from WordPress featured image ID: 57762
+[2025-05-31T10:06:05.145Z] ✅ Created post: How Blockchain Technology Is Redefining The Future Of Music Royalty Management with 0 categories and author: thecharlesisidi
+[2025-05-31T10:06:05.825Z] Set featured image ID to: 455 from WordPress featured image ID: 57769
+[2025-05-31T10:06:12.395Z] ✅ Created post: What Are Music Royalties? with 0 categories and author: thecharlesisidi
+[2025-05-31T10:06:13.033Z] Set featured image ID to: 461 from WordPress featured image ID: 57796
+[2025-05-31T10:06:19.569Z] ✅ Created post: How Does Music Licensing Work? with 0 categories and author: thecharlesisidi
+[2025-05-31T10:06:20.241Z] Set featured image ID to: 462 from WordPress featured image ID: 57840
+[2025-05-31T10:06:26.658Z] ✅ Created post: Is Royalti.io the ChatGPT of Music Royalty and Accounting? with 0 categories and author: thecharlesisidi
+[2025-05-31T10:06:27.319Z] Set featured image ID to: 463 from WordPress featured image ID: 57850
+[2025-05-31T10:06:33.710Z] ✅ Created post: Royalti.io Music Management Platform: Everything You Need to Know About Split Sheets and Collaboration Agreements with 0 categories and author: thecharlesisidi
+[2025-05-31T10:06:34.374Z] Set featured image ID to: 466 from WordPress featured image ID: 57889
+[2025-05-31T10:06:40.768Z] ✅ Created post: 2023 In African Music: Top 5 Defining Moments In The Music Industry with 0 categories and author: thecharlesisidi
+[2025-05-31T10:06:41.426Z] Set featured image ID to: 474 from WordPress featured image ID: 57922
+[2025-05-31T10:06:48.926Z] ✅ Created post: Music Contracts Explained with 0 categories and author: thecharlesisidi
+[2025-05-31T10:06:49.617Z] Set featured image ID to: 475 from WordPress featured image ID: 57929
+[2025-05-31T10:06:55.566Z] ✅ Created post: Join us on X spaces! with 0 categories and author: nedjamez
+[2025-05-31T10:06:56.219Z] Set featured image ID to: 487 from WordPress featured image ID: 57958
+[2025-05-31T10:07:02.706Z] ✅ Created post: 3 Lessons Asake Taught Us In 2023 with 0 categories and author: thecharlesisidi
+[2025-05-31T10:07:03.376Z] Set featured image ID to: 488 from WordPress featured image ID: 57963
+[2025-05-31T10:07:09.855Z] ✅ Created post: The Importance Of Music Catalogues For Music Artistes with 0 categories and author: thecharlesisidi
+[2025-05-31T10:07:10.585Z] Set featured image ID to: 489 from WordPress featured image ID: 57970
+[2025-05-31T10:07:16.967Z] ✅ Created post: Music Songwriters: Who They Are and What They Do with 0 categories and author: thecharlesisidi
+[2025-05-31T10:07:17.690Z] Set featured image ID to: 490 from WordPress featured image ID: 57974
+[2025-05-31T10:07:24.048Z] ✅ Created post: 5 Ways Technology Is Revolutionizing Accounting In The Music Industry with 0 categories and author: thecharlesisidi
+[2025-05-31T10:07:24.721Z] Set featured image ID to: 500 from WordPress featured image ID: 58149
+[2025-05-31T10:07:30.753Z] ✅ Created post: Updates: Downloads, Statistics, Pricing and more... with 0 categories and author: nedjamez
+[2025-05-31T10:07:31.423Z] Set featured image ID to: 509 from WordPress featured image ID: 58177
+[2025-05-31T10:07:37.504Z] ✅ Created post: The Business of Music: Understanding Distribution and Publishing with 0 categories and author: adaugo
+[2025-05-31T10:07:38.193Z] Set featured image ID to: 508 from WordPress featured image ID: 58169
+[2025-05-31T10:07:44.417Z] ✅ Created post: Unlocking the Power of White Label Music Distribution for Record Labels and Distribution Companies with 0 categories and author: adaugo
+[2025-05-31T10:07:45.079Z] Set featured image ID to: 507 from WordPress featured image ID: 58168
+[2025-05-31T10:07:51.971Z] ✅ Created post: How Spotify's 2024 Royalty Model Will Reshape Music Distribution with 0 categories and author: adaugo
+[2025-05-31T10:07:52.619Z] Set featured image ID to: 506 from WordPress featured image ID: 58165
+[2025-05-31T10:08:00.655Z] ✅ Created post: Essential Tips for Independent Artists: Mastering Music Distribution with 0 categories and author: adaugo
+[2025-05-31T10:08:01.311Z] Set featured image ID to: 505 from WordPress featured image ID: 58162
+[2025-05-31T10:08:07.573Z] ✅ Created post: Celebrating Onyeka Onwenu: A Legacy of Music, Activism, and Social Change with 0 categories and author: adaugo
+[2025-05-31T10:08:15.487Z] ✅ Created post: 10 Reasons To Use Royalti.io for Catalog and Royalty Management with 0 categories and author: adaugo
+[2025-05-31T10:08:16.162Z] Set featured image ID to: 504 from WordPress featured image ID: 58159
+[2025-05-31T10:08:23.896Z] ✅ Created post: Collaboration or Feature? Decoding Music Industry Terms for Success with 0 categories and author: adaugo
+[2025-05-31T10:08:24.593Z] Set featured image ID to: 511 from WordPress featured image ID: 58212
+[2025-05-31T10:08:32.129Z] ✅ Created post: Copyright Battles in Music: Insights from Mike Ejeagha’s Journey with 0 categories and author: adaugo
+[2025-05-31T10:08:32.835Z] Set featured image ID to: 510 from WordPress featured image ID: 58209
+[2025-05-31T10:08:39.487Z] ✅ Created post: Immersive Tech and Music: Unlocking New Revenue Streams in Virtual Concerts with 0 categories and author: adaugo
+[2025-05-31T10:08:40.162Z] Set featured image ID to: 512 from WordPress featured image ID: 58218
+[2025-05-31T10:08:46.633Z] ✅ Created post: Social Media Banter: The Strategic Power of Controversy with 0 categories and author: adaugo
+[2025-05-31T10:08:47.329Z] Set featured image ID to: 488 from WordPress featured image ID: 57963
+[2025-05-31T10:08:55.375Z] ✅ Created post: A Decade of Rhythms: Nigerian Music In The '60s with 0 categories and author: adaugo
+[2025-05-31T10:08:56.689Z] Set featured image ID to: 492 from WordPress featured image ID: 58027
+[2025-05-31T10:09:03.233Z] ✅ Created post: 5 Tips on How To Maximize Your Royalties with 0 categories and author: adaugo
+[2025-05-31T10:09:03.885Z] Set featured image ID to: 518 from WordPress featured image ID: 58265
+[2025-05-31T10:09:10.337Z] ✅ Created post: The Impact of AI In Music Production: Balancing Innovation and Authenticity with 0 categories and author: adaugo
+[2025-05-31T10:09:10.994Z] Set featured image ID to: 519 from WordPress featured image ID: 58267
+[2025-05-31T10:09:17.122Z] ✅ Created post: Leveraging International Collaborations: Maximizing Royalties For Nigerian Artists with 0 categories and author: adaugo
+[2025-05-31T10:09:17.794Z] Set featured image ID to: 515 from WordPress featured image ID: 58259
+[2025-05-31T10:09:24.002Z] ✅ Created post: Navigating The Growing Demand For Nigerian Music In The Diaspora with 0 categories and author: adaugo
+[2025-05-31T10:09:24.690Z] Set featured image ID to: 520 from WordPress featured image ID: 58277
+[2025-05-31T10:09:31.904Z] ✅ Created post: Balancing Artistry and Strategy: EPs vs. Singles in Today’s Music Market with 0 categories and author: adaugo
+[2025-05-31T10:09:32.568Z] Set featured image ID to: 488 from WordPress featured image ID: 57963
