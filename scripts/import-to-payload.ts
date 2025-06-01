@@ -1,10 +1,9 @@
-
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 // dotenv is now preloaded via -r dotenv/config in package.json script
 
 import payload from 'payload';
-import type { Payload } from 'payload';
+import type { Payload, PayloadRequest } from 'payload';
 import axios from 'axios';
 import mime from 'mime-types';
 import * as cheerio from 'cheerio';
@@ -1305,9 +1304,9 @@ const importMedia = async (payload: Payload): Promise<Record<string, string>> =>
 };
 
 // Define a minimal interface for the 'req' object for the script context
-interface ScriptPayloadRequest {
-  payload: Payload; // Hooks like revalidatePost expect req.payload
-  skipRevalidation?: boolean; // Our custom flag
+interface ScriptPayloadRequest extends Partial<PayloadRequest> {
+  payload: Payload;
+  skipRevalidation?: boolean;
 }
 
 const importPosts = async (categoryMap: Record<string, string>, userMap: Record<string, string>, mediaMap: Record<string, string>, tagMap: Record<string, string> = {}) => {
@@ -1319,7 +1318,7 @@ const importPosts = async (categoryMap: Record<string, string>, userMap: Record<
     try {
       const existingPosts = await payload.find({
         collection: 'posts',
-        where: { slug: { equals: post.slug } },
+        where: { title: { equals: post.title } },
       });
 
       if (existingPosts.docs.length > 0 && CONFIG.skipExisting) {
@@ -1356,15 +1355,6 @@ const importPosts = async (categoryMap: Record<string, string>, userMap: Record<
               tagIds.push(tagId);
             }
           }
-        }
-      }
-      
-      // Map post author to authors array
-      let authors: number[] | null = null;
-      if (post.creator && userMap[post.creator]) {
-        const userId = Number(userMap[post.creator]);
-        if (!isNaN(userId)) {
-          authors = [userId];
         }
       }
 
@@ -1544,23 +1534,6 @@ const importPosts = async (categoryMap: Record<string, string>, userMap: Record<
             }
           }
           
-          // Debug output for specific posts
-          if (post.id === '57549') {
-            log(`DEBUG: Post ${post.title} has ${post.tags?.length || 0} tags in JSON`);
-            log(`DEBUG: Found ${tagIds.length} matching tag IDs in the tag map`);
-            if (post.tags) {
-              post.tags.forEach(tag => log(`  - Tag: ${tag} => ID: ${tagMap[tag] || 'NOT FOUND'}`));
-            }
-          }
-          
-          // Debug the tag IDs to ensure they're valid numbers
-          if (tagIds.length > 0 && post.id === '57549') {
-            log(`DEBUG: Tag IDs for ${post.title}:`);
-            tagIds.forEach((id, index) => {
-              log(`  ${index}: ${id} (${typeof id}, isNaN: ${isNaN(Number(id))})`);
-            });
-          }
-
           const postData: Omit<Post, 'id' | 'createdAt' | 'updatedAt' | 'sizes'> = {
             title: post.title,
             slug: post.slug,
@@ -1589,16 +1562,19 @@ const importPosts = async (categoryMap: Record<string, string>, userMap: Record<
           };
 
           try {
-            await payload.create({
+            const result = await payload.create({
               collection: 'posts',
               data: postData,
               req: {
                 payload: payload, // Pass the payload instance
-                skipRevalidation: true,
+                skipRevalidation: true, // Skip Next.js revalidation during import
                 // Add a flag to disable search indexing during import
-                disableSearchSync: true,
-              } as ScriptPayloadRequest,
+                // disableSearchSync: true,
+              } as PayloadRequest & { skipRevalidation: boolean },
             });
+            if (result.id) {
+              log(`✅ Created post: ${result.id} ${post.title} with ${categoryIds.length} categories and author: ${post.creator || 'none'}`);
+            }
           } catch (error) {
             // If the error is related to search indexing, log it but don't fail the import
             if (error?.stack?.includes('search') || 
@@ -1616,7 +1592,6 @@ const importPosts = async (categoryMap: Record<string, string>, userMap: Record<
         await createPost(post);
 
         importCount++;
-        log(`✅ Created post: ${post.title} with ${categoryIds.length} categories and author: ${post.creator || 'none'}`);
       } else {
         log(`[DRY RUN] Would create post: ${post.title} with ${categoryIds.length} categories and author: ${post.creator || 'none'}`);
       }
@@ -1645,8 +1620,6 @@ const importPages = async (mediaMap: Record<string, string>) => {
         continue;
       }
 
-      const richText = htmlToLexical(page.content || '');
-
       const pageBlocks: ContentBlock[] = [{
           blockType: 'content',
           richText: { root: htmlToLexical(page.content || '') },
@@ -1672,6 +1645,10 @@ const importPages = async (mediaMap: Record<string, string>) => {
           await payload.create({
             collection: 'pages',
             data: pageData,
+            req: {
+              payload: payload,
+              skipRevalidation: true, // Skip Next.js revalidation during import
+            } as PayloadRequest & { skipRevalidation: boolean },
           });
         };
 
