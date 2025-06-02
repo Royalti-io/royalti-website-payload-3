@@ -1,5 +1,5 @@
 import type { Field, Block } from 'payload'
-import { MainHeroBlock, SecondaryHeroBlock, ProductHeroBlock } from './HeroBlocks'
+import { MainHeroBlock, SecondaryHeroBlock, ProductHeroBlock } from './heroBlocks'
 
 // Create a blocks field for hero components
 export const heroBlocksField: Field = {
