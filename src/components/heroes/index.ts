@@ -1,0 +1,5 @@
+export { MainHero } from "./MainHero"
+export { SecondaryHero } from "./SecondaryHero"
+export { ProductHero } from "./ProductHero"
+export { HeroRenderer } from "./HeroRenderer"
+export { HeroBlockRenderer } from "./HeroBlockRenderer"

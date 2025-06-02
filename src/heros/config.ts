@@ -4,6 +4,8 @@ import {
   FixedToolbarFeature,
   HeadingFeature,
   InlineToolbarFeature,
+  OrderedListFeature,
+  UnorderedListFeature,
   lexicalEditor,
 } from '@payloadcms/richtext-lexical'
 
@@ -46,6 +48,8 @@ export const hero: Field = {
           return [
             ...rootFeatures,
             HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+            OrderedListFeature(),
+            UnorderedListFeature(),
             FixedToolbarFeature(),
             InlineToolbarFeature(),
           ]

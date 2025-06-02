@@ -188,7 +188,16 @@ export interface Page {
       | null;
     media?: (number | null) | Media;
   };
-  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock)[];
+  layout: (
+    | MainHeroBlock
+    | SecondaryHeroBlock
+    | ProductHeroBlock
+    | CallToActionBlock
+    | ContentBlock
+    | MediaBlock
+    | ArchiveBlock
+    | FormBlock
+  )[];
   meta?: {
     title?: string | null;
     /**
@@ -317,6 +326,116 @@ export interface FolderInterface {
   };
   updatedAt: string;
   createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "MainHeroBlock".
+ */
+export interface MainHeroBlock {
+  /**
+   * Optional announcement badge (e.g., "🎉 New feature launched!")
+   */
+  announcement?: string | null;
+  /**
+   * Main headline. Last 2 words will be highlighted with gradient.
+   */
+  heading: string;
+  /**
+   * Supporting text below the headline
+   */
+  subheading?: string | null;
+  ctaButton: {
+    text: string;
+    /**
+     * Internal link (/about) or external (https://...)
+     */
+    url: string;
+  };
+  secondaryButton?: {
+    text?: string | null;
+    url?: string | null;
+  };
+  /**
+   * Optional background image (will be subtle overlay)
+   */
+  backgroundImage?: (number | null) | Media;
+  /**
+   * Small feature bullets displayed below CTAs
+   */
+  features?:
+    | {
+        feature: string;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Key metrics displayed at bottom of hero
+   */
+  statistics?:
+    | {
+        /**
+         * e.g., "10,000+" or "99%"
+         */
+        value: string;
+        /**
+         * e.g., "Active Users" or "Uptime"
+         */
+        label: string;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'mainHero';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SecondaryHeroBlock".
+ */
+export interface SecondaryHeroBlock {
+  heading: string;
+  subheading?: string | null;
+  backgroundPattern?: ('dots' | 'grid' | 'none') | null;
+  /**
+   * Automatically show breadcrumbs based on page hierarchy
+   */
+  showBreadcrumbs?: boolean | null;
+  /**
+   * Optional custom breadcrumbs (if automatic breadcrumbs are not suitable)
+   */
+  breadcrumbs?:
+    | {
+        label: string;
+        href: string;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'secondaryHero';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ProductHeroBlock".
+ */
+export interface ProductHeroBlock {
+  heading: string;
+  subheading?: string | null;
+  image: number | Media;
+  features?:
+    | {
+        title: string;
+        description: string;
+        id?: string | null;
+      }[]
+    | null;
+  ctaButton: {
+    text: string;
+    url: string;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'productHero';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -975,6 +1094,9 @@ export interface PagesSelect<T extends boolean = true> {
   layout?:
     | T
     | {
+        mainHero?: T | MainHeroBlockSelect<T>;
+        secondaryHero?: T | SecondaryHeroBlockSelect<T>;
+        productHero?: T | ProductHeroBlockSelect<T>;
         cta?: T | CallToActionBlockSelect<T>;
         content?: T | ContentBlockSelect<T>;
         mediaBlock?: T | MediaBlockSelect<T>;
@@ -994,6 +1116,86 @@ export interface PagesSelect<T extends boolean = true> {
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "MainHeroBlock_select".
+ */
+export interface MainHeroBlockSelect<T extends boolean = true> {
+  announcement?: T;
+  heading?: T;
+  subheading?: T;
+  ctaButton?:
+    | T
+    | {
+        text?: T;
+        url?: T;
+      };
+  secondaryButton?:
+    | T
+    | {
+        text?: T;
+        url?: T;
+      };
+  backgroundImage?: T;
+  features?:
+    | T
+    | {
+        feature?: T;
+        id?: T;
+      };
+  statistics?:
+    | T
+    | {
+        value?: T;
+        label?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SecondaryHeroBlock_select".
+ */
+export interface SecondaryHeroBlockSelect<T extends boolean = true> {
+  heading?: T;
+  subheading?: T;
+  backgroundPattern?: T;
+  showBreadcrumbs?: T;
+  breadcrumbs?:
+    | T
+    | {
+        label?: T;
+        href?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ProductHeroBlock_select".
+ */
+export interface ProductHeroBlockSelect<T extends boolean = true> {
+  heading?: T;
+  subheading?: T;
+  image?: T;
+  features?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        id?: T;
+      };
+  ctaButton?:
+    | T
+    | {
+        text?: T;
+        url?: T;
+      };
+  id?: T;
+  blockName?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
