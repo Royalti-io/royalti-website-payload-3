@@ -15,11 +15,11 @@ interface HeroBlockData {
 export const HeroRenderer: FC<HeroBlockData> = ({ blockType, ...data }) => {
   switch (blockType) {
     case 'mainHero':
-      return <MainHero {...data} />
+      return <MainHero heading="" {...data} />
     case 'secondaryHero':
-      return <SecondaryHero {...data} />
+      return <SecondaryHero heading="" {...data} />
     case 'productHero':
-      return <ProductHero {...data} />
+      return <ProductHero heading="" {...data} />
     default:
       return null
   }

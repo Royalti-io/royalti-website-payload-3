@@ -1,5 +1,5 @@
-import type { Field } from 'payload'
-import { MainHeroBlock, SecondaryHeroBlock, ProductHeroBlock } from '@/collections/blocks/HeroBlocks'
+import type { Field, Block } from 'payload'
+import { MainHeroBlock, SecondaryHeroBlock, ProductHeroBlock } from './HeroBlocks'
 
 // Create a blocks field for hero components
 export const heroBlocksField: Field = {
@@ -7,8 +7,8 @@ export const heroBlocksField: Field = {
   type: 'blocks',
   label: 'Hero Components',
   blocks: [
-    MainHeroBlock,
-    SecondaryHeroBlock,
-    ProductHeroBlock,
+    MainHeroBlock as Block,
+    SecondaryHeroBlock as Block,
+    ProductHeroBlock as Block,
   ],
 }

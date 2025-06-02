@@ -4,7 +4,7 @@ import React from 'react'
 import type { FC } from 'react'
 import Link from 'next/link'
 import { Media } from '@/components/Media'
-import type { Media as MediaType } from 'payload/types'
+import type { Media as MediaType } from '@/payload-types'
 
 interface ProductHeroProps {
   heading: string
