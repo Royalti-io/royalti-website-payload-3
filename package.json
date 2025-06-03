@@ -51,6 +51,7 @@
     "mime": "^4.0.7",
     "mime-types": "^3.0.1",
     "next": "^15.2.3",
+    "next-themes": "^0.4.6",
     "node-fetch": "^3.3.2",
     "payload": "^3.39.1",
     "payload-admin-bar": "^1.0.6",

@@ -3,6 +3,26 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .delay-100 {
+    animation-delay: 100ms;
+  }
+  .delay-300 {
+    animation-delay: 300ms;
+  }
+  .delay-700 {
+    animation-delay: 700ms;
+  }
+  .delay-1000 {
+    animation-delay: 1000ms;
+  }
+  
+  .fade-bottom {
+    mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+  }
+}
+
 @layer base {
   h1,
   h2,
@@ -50,6 +70,9 @@
     --warning: 34 89% 85%;
     --error: 10 100% 86%;
 
+    --brand: 27 96% 61%;
+    --brand-foreground: 31 97% 72%;
+
     /* Royal theme colors */
     --royal-50: 200 100% 97%;
     --royal-100: 200 100% 95%;
@@ -64,8 +87,11 @@
   }
 
   [data-theme='dark'] {
-    --background: 0 0% 0%;
+    --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
+
+    --brand: 31 97% 72%;
+    --brand-foreground: 27 96% 61%;
 
     --card: 0 0% 4%;
     --card-foreground: 210 40% 98%;

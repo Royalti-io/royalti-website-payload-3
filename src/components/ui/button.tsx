@@ -26,6 +26,7 @@ const buttonVariants = cva(
         outline: 'border border-border bg-background hover:bg-card hover:text-accent-foreground',
         secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
         royal: 'bg-royal-600 text-white hover:bg-royal-700',
+        glow: 'border border-brand/20 bg-background hover:border-brand/40 hover:bg-brand/5 text-foreground shadow-[0_0_15px_rgba(var(--brand),0.1)]',
       },
     },
   },
