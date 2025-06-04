@@ -36,25 +36,26 @@
 
   :root {
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 210 11% 15%; /* #1b2023 */
 
     --card: 240 5% 96%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 210 11% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 210 11% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Royalti.io Primary Brand Colors */
+    --primary: 180 100% 20%; /* #006666 - Royalti Blue */
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 180 100% 25%; /* Slightly lighter Royalti Blue */
+    --secondary-foreground: 0 0% 100%;
 
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 23 94% 64%; /* #f3784e - Orange accent */
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
@@ -62,65 +63,94 @@
     --border: 240 6% 90%;
     --border-border: var(--border);
     --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --ring: 180 100% 20%; /* Match primary */
 
     --radius: 0.2rem;
 
-    --success: 196 52% 74%;
+    --success: 160 51% 49%; /* #009d73 - Success green */
     --warning: 34 89% 85%;
     --error: 10 100% 86%;
 
-    --brand: 27 96% 61%;
-    --brand-foreground: 31 97% 72%;
+    /* Royalti.io Brand Colors */
+    --brand: 180 100% 20%; /* #006666 - Primary */
+    --brand-foreground: 0 0% 100%;
 
-    /* Royal theme colors */
-    --royal-50: 200 100% 97%;
-    --royal-100: 200 100% 95%;
-    --royal-200: 200 100% 90%;
-    --royal-300: 200 100% 85%;
-    --royal-400: 200 100% 75%;
-    --royal-500: 200 100% 65%;
-    --royal-600: 200 100% 55%;
-    --royal-700: 200 100% 45%;
-    --royal-800: 200 100% 35%;
-    --royal-900: 200 100% 25%;
+    /* Royalti Blue Scale */
+    --royal-50: 180 100% 95%; /* Very light royal */
+    --royal-100: 180 100% 90%;
+    --royal-200: 180 100% 80%;
+    --royal-300: 180 100% 70%;
+    --royal-400: 180 100% 60%;
+    --royal-500: 180 100% 50%;
+    --royal-600: 180 100% 20%; /* #006666 - Primary */
+    --royal-700: 166 100% 10%; /* #03321e - Midnight */
+    --royal-800: 210 11% 15%; /* #1b2023 - Dark */
+    --royal-900: 210 11% 10%;
+
+    /* Secondary Brand Colors */
+    --secondary-green: 160 51% 49%; /* #009d73 */
+    --secondary-green-light: 160 100% 60%; /* #00d199 */
+    --secondary-green-lighter: 160 71% 64%; /* #66e3c2 */
+    --secondary-green-lightest: 160 73% 89%; /* #ccf6eb */
+
+    --secondary-blue: 228 100% 80%; /* #c2cfff */
+    --secondary-blue-medium: 228 100% 70%; /* #99afff */
+    --secondary-blue-light: 212 100% 87%; /* #bfd7ff */
+
+    --secondary-yellow: 48 100% 50%; /* #ffcc00 */
+    --secondary-yellow-light: 48 100% 70%; /* #ffe266 */
+    --secondary-yellow-lighter: 48 100% 80%; /* #ffeb99 */
+    --secondary-yellow-lightest: 48 100% 90%; /* #fff5cc */
   }
 
   [data-theme='dark'] {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 210 11% 10%; /* Very dark background */
+    --foreground: 0 0% 98%;
 
-    --brand: 31 97% 72%;
-    --brand-foreground: 27 96% 61%;
+    /* Brand colors stay consistent in dark mode */
+    --brand: 180 100% 20%; /* #006666 - Primary */
+    --brand-foreground: 0 0% 100%;
 
-    --card: 0 0% 4%;
-    --card-foreground: 210 40% 98%;
+    --card: 210 11% 15%; /* #1b2023 equivalent */
+    --card-foreground: 0 0% 98%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 210 11% 10%;
+    --popover-foreground: 0 0% 98%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 180 100% 30%; /* Slightly lighter in dark mode */
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 180 100% 15%; /* Darker in dark mode */
+    --secondary-foreground: 0 0% 98%;
 
-    --muted: 217.2 32.6% 17.5%;
+    --muted: 210 11% 20%;
     --muted-foreground: 215 20.2% 65.1%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 23 94% 64%; /* #f3784e - Orange accent remains same */
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 0, 0%, 15%, 0.5;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --border: 210 11% 20%;
+    --input: 210 11% 20%;
+    --ring: 180 100% 30%;
 
-    --success: 196 100% 14%;
-    --warning: 34 51% 25%;
-    --error: 10 39% 43%;
+    --success: 160 51% 60%; /* Brighter green in dark mode */
+    --warning: 34 51% 50%;
+    --error: 10 39% 60%;
+
+    /* Dark mode royal colors */
+    --royal-50: 210 11% 95%;
+    --royal-100: 210 11% 90%;
+    --royal-200: 180 100% 80%;
+    --royal-300: 180 100% 70%;
+    --royal-400: 180 100% 60%;
+    --royal-500: 180 100% 50%;
+    --royal-600: 180 100% 30%; /* Brighter in dark mode */
+    --royal-700: 180 100% 20%; /* #006666 */
+    --royal-800: 166 100% 10%; /* #03321e */
+    --royal-900: 210 11% 5%;
   }
 }
 

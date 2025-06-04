@@ -80,17 +80,37 @@ const config = {
         'brand-foreground': 'hsl(var(--brand-foreground))',
         // Royalti.io brand colors based on #006666
         royal: {
-          50: '#f0fdfa',
-          100: '#ccfbf1',
-          200: '#99f6e4',
-          300: '#5eead4',
-          400: '#2dd4bf',
-          500: '#14b8a6',
-          600: '#006666', // Primary brand color
-          700: '#0f5a54',
-          800: '#134e4a',
-          900: '#164e46',
+          50: 'hsl(var(--royal-50))',   /* Very light royal */
+          100: 'hsl(var(--royal-100))', 
+          200: 'hsl(var(--royal-200))', 
+          300: 'hsl(var(--royal-300))', 
+          400: 'hsl(var(--royal-400))', 
+          500: 'hsl(var(--royal-500))', 
+          600: 'hsl(var(--royal-600))', /* #006666 - Primary brand color */
+          700: 'hsl(var(--royal-700))', /* #03321e - Midnight */
+          800: 'hsl(var(--royal-800))', /* #1b2023 - Dark */
+          900: 'hsl(var(--royal-900))',
+          DEFAULT: 'hsl(var(--royal-600))', /* Default to primary brand color */
         },
+        // Secondary brand colors from guidelines
+        'royal-green': {
+          DEFAULT: 'hsl(var(--secondary-green))',     /* #009d73 */
+          light: 'hsl(var(--secondary-green-light))', /* #00d199 */
+          lighter: 'hsl(var(--secondary-green-lighter))', /* #66e3c2 */
+          lightest: 'hsl(var(--secondary-green-lightest))', /* #ccf6eb */
+        },
+        'royal-blue': {
+          DEFAULT: 'hsl(var(--secondary-blue))',      /* #c2cfff */
+          medium: 'hsl(var(--secondary-blue-medium))', /* #99afff */
+          light: 'hsl(var(--secondary-blue-light))',   /* #bfd7ff */
+        },
+        'royal-yellow': {
+          DEFAULT: 'hsl(var(--secondary-yellow))',      /* #ffcc00 */
+          light: 'hsl(var(--secondary-yellow-light))',   /* #ffe266 */
+          lighter: 'hsl(var(--secondary-yellow-lighter))', /* #ffeb99 */
+          lightest: 'hsl(var(--secondary-yellow-lightest))', /* #fff5cc */
+        },
+        'royal-orange': 'hsl(var(--accent))', /* #f3784e */
         // Complementary accent colors for modern/minimal design
         accent: {
           50: '#fafafa',
