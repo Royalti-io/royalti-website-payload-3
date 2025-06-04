@@ -1,6 +1,13 @@
 import { BeforeSync, DocToSync } from '@payloadcms/plugin-search/types'
 
-export const beforeSyncWithSearch: BeforeSync = async ({ originalDoc, searchDoc, payload }) => {
+export const beforeSyncWithSearch: BeforeSync = async ({ originalDoc, searchDoc, payload, req }) => {
+  // Check if we're in an import context and should skip search indexing
+  if (req?.skipRevalidation || req?.skipSearchSync) {
+    payload.logger.info(`Skipping search sync for document: ${originalDoc.id || originalDoc.slug} (import process)`);
+    // Return null to skip indexing entirely during import
+    return null;
+  }
+
   const {
     doc: { relationTo: collection },
   } = searchDoc
@@ -18,7 +25,6 @@ export const beforeSyncWithSearch: BeforeSync = async ({ originalDoc, searchDoc,
     },
     categories: [],
   }
-
   if (categories && Array.isArray(categories) && categories.length > 0) {
     // get full categories and keep a flattened copy of their most important properties
     try {

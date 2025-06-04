@@ -23,7 +23,12 @@ const generateURL: GenerateURL<Post | Page> = ({ doc }) => {
   return doc?.slug ? `${url}/${doc.slug}` : url
 }
 
-export const plugins: Plugin[] = [
+// Check if we're in an import/script context to disable search plugin
+const isImportContext = process.env.DISABLE_SEARCH === 'true' || 
+                       process.argv.some(arg => arg.includes('import-to-payload')) ||
+                       process.argv.some(arg => arg.includes('test-database'))
+
+const basePlugins: Plugin[] = [
   redirectsPlugin({
     collections: ['pages', 'posts'],
     overrides: {
@@ -79,13 +84,20 @@ export const plugins: Plugin[] = [
       },
     },
   }),
-  searchPlugin({
-    collections: ['posts'],
-    beforeSync: beforeSyncWithSearch,
-    searchOverrides: {
-      fields: ({ defaultFields }) => {
-        return [...defaultFields, ...searchFields]
+]
+
+// Conditionally add search plugin only when not in import context
+export const plugins: Plugin[] = [
+  ...basePlugins,
+  ...(isImportContext ? [] : [
+    searchPlugin({
+      collections: ['posts'],
+      beforeSync: beforeSyncWithSearch,
+      searchOverrides: {
+        fields: ({ defaultFields }) => {
+          return [...defaultFields, ...searchFields]
+        },
       },
-    },
-  }),
+    })
+  ])
 ]

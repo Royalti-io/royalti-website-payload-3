@@ -1568,9 +1568,8 @@ const importPosts = async (categoryMap: Record<string, string>, userMap: Record<
               req: {
                 payload: payload, // Pass the payload instance
                 skipRevalidation: true, // Skip Next.js revalidation during import
-                // Add a flag to disable search indexing during import
-                // disableSearchSync: true,
-              } as PayloadRequest & { skipRevalidation: boolean },
+                skipSearchSync: true, // Skip search indexing during import
+              } as PayloadRequest & { skipRevalidation: boolean; skipSearchSync: boolean },
             });
             if (result.id) {
               log(`✅ Created post: ${result.id} ${post.title} with ${categoryIds.length} categories and author: ${post.creator || 'none'}`);
@@ -1648,7 +1647,8 @@ const importPages = async (mediaMap: Record<string, string>) => {
             req: {
               payload: payload,
               skipRevalidation: true, // Skip Next.js revalidation during import
-            } as PayloadRequest & { skipRevalidation: boolean },
+              skipSearchSync: true, // Skip search indexing during import
+            } as PayloadRequest & { skipRevalidation: boolean; skipSearchSync: boolean },
           });
         };
 

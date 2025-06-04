@@ -14,7 +14,9 @@
     "lint": "cross-env NODE_OPTIONS=--no-deprecation next lint",
     "lint:fix": "cross-env NODE_OPTIONS=--no-deprecation next lint --fix",
     "export:json": "cross-env NODE_OPTIONS=--no-deprecation node scripts/wp-to-json.js",
-    "import:payload": "cross-env NODE_OPTIONS=--no-deprecation tsx -r dotenv/config scripts/import-to-payload.ts",
+    "import:payload": "cross-env NODE_OPTIONS=--no-deprecation DISABLE_SEARCH=true tsx -r dotenv/config scripts/import-to-payload.ts",
+    "test:db": "cross-env NODE_OPTIONS=--no-deprecation DISABLE_SEARCH=true tsx -r dotenv/config scripts/test-database.ts",
+    "rebuild:search": "cross-env NODE_OPTIONS=--no-deprecation tsx -r dotenv/config scripts/rebuild-search.ts",
     "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
     "reinstall": "cross-env NODE_OPTIONS=--no-deprecation rm -rf node_modules && rm pnpm-lock.yaml && pnpm --ignore-workspace install",
     "start": "cross-env NODE_OPTIONS=--no-deprecation next start"

@@ -20,21 +20,32 @@ export const revalidatePost: CollectionAfterChangeHook<Post> = ({
     return doc;
   }
 
-  if (doc._status === 'published') {
-    const path = `/posts/${doc.slug}`
+  // Check if we're in a Next.js context before attempting revalidation
+  try {
+    if (doc._status === 'published') {
+      const path = `/posts/${doc.slug}`
 
-    req.payload.logger.info(`Revalidating post at path: ${path}`)
+      req.payload.logger.info(`Revalidating post at path: ${path}`)
 
-    revalidatePath(path)
-  }
+      revalidatePath(path)
+    }
+    // If the post was previously published, we need to revalidate the old path
+    if (previousDoc._status === 'published' && doc._status !== 'published') {
+      const oldPath = `/posts/${previousDoc.slug}`
 
-  // If the post was previously published, we need to revalidate the old path
-  if (previousDoc._status === 'published' && doc._status !== 'published') {
-    const oldPath = `/posts/${previousDoc.slug}`
+      req.payload.logger.info(`Revalidating old post at path: ${oldPath}`)
 
-    req.payload.logger.info(`Revalidating old post at path: ${oldPath}`)
-
-    revalidatePath(oldPath)
+      revalidatePath(oldPath)
+    }
+  } catch (error) {
+    // Silently handle revalidation errors during imports or script execution
+    if (error.message?.includes('static generation store') || 
+        error.message?.includes('revalidatePath')) {
+      req.payload.logger.info(`Skipping revalidation for post: ${doc.slug} (not in Next.js context)`);
+    } else {
+      // Log other unexpected errors
+      req.payload.logger.error(`Error during post revalidation: ${error.message}`);
+    }
   }
 
   return doc
