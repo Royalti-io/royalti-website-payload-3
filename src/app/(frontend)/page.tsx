@@ -5,6 +5,7 @@ import { draftMode } from 'next/headers'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import { generateMeta } from '@/utilities/generateMeta'
+import { generateHomeMeta } from '@/utilities/generateHomeMeta'
 import { PayloadRedirects } from '@/components/PayloadRedirects'
 import { homeStatic } from '@/endpoints/seed/home-static'
 
@@ -59,24 +60,6 @@ export default async function HomePage() {
 }
 
 export async function generateMetadata(): Promise<Metadata> {
-  const slug = 'home'
-  const payload = await getPayload({ config: configPromise })
-  const { isEnabled: draft } = await draftMode()
-
-  const result = await payload.find({
-    collection: 'pages',
-    draft,
-    limit: 1,
-    pagination: false,
-    overrideAccess: draft,
-    where: {
-      slug: {
-        equals: slug,
-      },
-    },
-  })
-
-  const page = result.docs?.[0] || homeStatic
-
-  return generateMeta({ doc: page })
+  // Use optimized homepage metadata
+  return generateHomeMeta()
 }
