@@ -224,3 +224,7 @@
 [2025-06-06T11:40:12.924Z] ⏭️ Media item 57889 (WP ID) already exists as 466 (Payload ID). Skipping download.
 [2025-06-06T11:40:14.738Z] ⏭️ Media item 57893 (WP ID) already exists as 467 (Payload ID). Skipping download.
 [2025-06-06T11:40:16.552Z] ⏭️ Media item 57895 (WP ID) already exists as 468 (Payload ID). Skipping download.
+[2025-06-06T11:40:18.322Z] ⏭️ Media item 57898 (WP ID) already exists as 469 (Payload ID). Skipping download.
+[2025-06-06T11:40:20.142Z] ⏭️ Media item 57899 (WP ID) already exists as 470 (Payload ID). Skipping download.
+[2025-06-06T11:40:22.131Z] ⏭️ Media item 57900 (WP ID) already exists as 471 (Payload ID). Skipping download.
+[2025-06-06T11:40:23.932Z] ⏭️ Media item 57901 (WP ID) already exists as 472 (Payload ID). Skipping download.
