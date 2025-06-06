@@ -23,7 +23,7 @@ export const FinalCTASection: React.FC = () => {
             Ready to Transform Your Music Business?
           </h2>
           <p className="text-xl opacity-90 max-w-3xl mx-auto mb-12">
-            Join hundreds of music professionals who've eliminated royalty headaches and increased their revenue with Royalti.io. 
+            Join hundreds of music professionals who&apos;ve eliminated royalty headaches and increased their revenue with Royalti.io. 
             Start your 90-day transformation today.
           </p>
 
