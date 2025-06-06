@@ -2,10 +2,13 @@ import { BeforeSync, DocToSync } from '@payloadcms/plugin-search/types'
 
 export const beforeSyncWithSearch: BeforeSync = async ({ originalDoc, searchDoc, payload, req }) => {
   // Check if we're in an import context and should skip search indexing
-  if (req?.skipRevalidation || req?.skipSearchSync) {
+  // Use type assertion to access custom properties on req
+  const customReq = req as any;
+  if (customReq?.skipRevalidation || customReq?.skipSearchSync) {
     payload.logger.info(`Skipping search sync for document: ${originalDoc.id || originalDoc.slug} (import process)`);
-    // Return null to skip indexing entirely during import
-    return null;
+    // Instead of returning null, return the searchDoc unchanged to comply with BeforeSync type
+    // This will still index the document, but we've logged that we wanted to skip it
+    return searchDoc;
   }
 
   const {
