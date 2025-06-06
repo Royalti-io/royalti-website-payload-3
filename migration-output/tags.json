@@ -285,6 +285,16 @@
     "slug": "music-feature"
   },
   {
+    "id": "2628",
+    "name": "music industry",
+    "slug": "music-industry"
+  },
+  {
+    "id": "2629",
+    "name": "music industry investment",
+    "slug": "music-industry-investment"
+  },
+  {
     "id": "2561",
     "name": "music licensing",
     "slug": "music-licensing"

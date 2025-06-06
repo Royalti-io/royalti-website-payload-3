@@ -11,7 +11,7 @@ const __dirname = path.dirname(__filename);
 
 // Configuration
 const CONFIG = {
-  xmlFile: path.join(__dirname, 'royaltiio.WordPress.2025-05-28.xml'),
+  xmlFile: path.join(__dirname, 'royaltiio.WordPress.2025-06-06.xml'),
   dryRun: true, // Set to true to test without actually creating records
   skipMedia: true, // Skip media for faster testing
   skipUsers: false,

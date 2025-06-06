@@ -6,7 +6,7 @@ import { fileURLToPath } from 'url'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-const xmlFile = path.join(__dirname, 'royaltiio.WordPress.2025-05-28.xml')
+const xmlFile = path.join(__dirname, 'royaltiio.WordPress.2025-06-06.xml')
 const xmlData = fs.readFileSync(xmlFile, 'utf8')
 
 // FIXED parser for WordPress XML

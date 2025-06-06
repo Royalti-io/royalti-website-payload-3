@@ -10,7 +10,7 @@ console.log('Debug script running...');
 
 try {
   // Check if the XML file exists
-  const xmlFilePath = path.join(__dirname, 'royaltiio.WordPress.2025-05-28.xml');
+  const xmlFilePath = path.join(__dirname, 'royaltiio.WordPress.2025-06-06.xml');
   console.log(`Checking if XML file exists at: ${xmlFilePath}`);
   
   const fileExists = fs.existsSync(xmlFilePath);

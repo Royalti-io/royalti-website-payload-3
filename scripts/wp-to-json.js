@@ -13,7 +13,7 @@ const __dirname = path.dirname(__filename);
 
 // Configuration
 const CONFIG = {
-  xmlFile: path.join(__dirname, 'royaltiio.WordPress.2025-05-28.xml'),
+  xmlFile: path.join(__dirname, 'royaltiio.WordPress.2025-06-06.xml'),
   outputDir: path.join(__dirname, '../migration-output'),
   downloadMedia: false, // Whether to download media files (can be large)
   mediaDir: path.join(__dirname, '../migration-output/media'),
