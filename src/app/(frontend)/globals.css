@@ -16,7 +16,7 @@
   .delay-1000 {
     animation-delay: 1000ms;
   }
-  
+
   .fade-bottom {
     mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
     -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
@@ -152,6 +152,11 @@
     --royal-800: 166 100% 10%; /* #03321e */
     --royal-900: 210 11% 5%;
   }
+  .theme {
+    --animate-background-position-spin: background-position-spin 3000ms infinite alternate;
+    --animate-marquee: marquee var(--duration) infinite linear;
+    --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+  }
 }
 
 @layer base {
@@ -171,7 +176,6 @@ html[data-theme='dark'],
 html[data-theme='light'] {
   opacity: initial;
 }
-
 
 /* Bento Grid Fixes */
 @layer utilities {
@@ -321,5 +325,32 @@ html[data-theme='light'] {
 @media (min-width: 768px) {
   .bento-grid-container .bento-tall {
     grid-column: span 2 !important;
+  }
+}
+
+@theme inline {
+  @keyframes background-position-spin {
+  0% {
+    background-position: top center;
+    }
+  100% {
+    background-position: bottom center;
+    }
+  }
+  @keyframes marquee {
+  from {
+    transform: translateX(0);
+    }
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+    }
+  }
+  @keyframes marquee-vertical {
+  from {
+    transform: translateY(0);
+    }
+  to {
+    transform: translateY(calc(-100% - var(--gap)));
+    }
   }
 }
