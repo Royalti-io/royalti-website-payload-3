@@ -19,7 +19,8 @@ async function testDatabase() {
     console.log('✅ PayloadCMS initialized successfully')
 
     // Test database connection by counting collections
-    const collections = ['posts', 'pages', 'categories', 'users', 'media']
+    // Use 'as const' to tell TypeScript these are specific string literals that match collection slugs
+    const collections = ['posts', 'pages', 'categories', 'users', 'media'] as const
     
     for (const collection of collections) {
       try {
@@ -33,7 +34,8 @@ async function testDatabase() {
         
         if (result.docs.length > 0) {
           const sample = result.docs[0]
-          console.log(`   Sample item: ${sample.title || sample.name || sample.id}`)
+          // Use optional chaining and type assertion to safely access properties that might not exist on all collection types
+          console.log(`   Sample item: ${(sample as any).title || (sample as any).name || sample.id}`)
         }
       } catch (error) {
         console.error(`❌ Error querying ${collection}:`, error.message)
@@ -44,7 +46,7 @@ async function testDatabase() {
     
     try {
       const testPost = await payload.create({
-        collection: 'posts',
+        collection: 'posts' as const,
         data: {
           title: 'Test Post - Database Verification',
           slug: 'test-post-db-verification',

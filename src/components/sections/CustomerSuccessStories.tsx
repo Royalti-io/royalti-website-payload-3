@@ -77,7 +77,7 @@ export const CustomerSuccessStories: React.FC = () => {
               <div className="flex-grow">
                 <Quote className="w-10 h-10 text-royal-600 dark:text-royal-400 mb-4" />
                 <blockquote className="text-lg text-gray-700 dark:text-gray-200 italic leading-relaxed mb-6">
-                  "{testimonial.quote}"
+                  &quot;{testimonial.quote}&quot;
                 </blockquote>
               </div>
 
