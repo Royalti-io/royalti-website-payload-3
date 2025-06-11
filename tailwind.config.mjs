@@ -184,6 +184,9 @@ const config = {
         "pulse-slow": "pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+        'marquee': 'marquee var(--duration) linear infinite',
+        'marquee-vertical': 'marquee-vertical var(--duration) linear infinite',
+        'background-position-spin': 'background-position-spin 3s infinite alternate',
       },
       keyframes: {
         fadeIn: {
@@ -231,6 +234,30 @@ const config = {
         'accordion-up': {
           from: { height: 'var(--radix-accordion-content-height)' },
           to: { height: '0' },
+        },
+        'background-position-spin': {
+          '0%': {
+            'background-position': 'top center',
+          },
+          '100%': {
+            'background-position': 'bottom center',
+          },
+        },
+        'marquee': {
+          'from': {
+            transform: 'translateX(0)',
+          },
+          'to': {
+            transform: 'translateX(calc(-100% - var(--gap)))',
+          },
+        },
+        'marquee-vertical': {
+          'from': {
+            transform: 'translateY(0)',
+          },
+          'to': {
+            transform: 'translateY(calc(-100% - var(--gap)))',
+          },
         },
       },
       borderRadius: {

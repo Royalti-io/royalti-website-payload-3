@@ -88,7 +88,6 @@ const ReviewCard = ({
       )}
     >
       <div className="flex flex-row items-center gap-2">
-        <img className="rounded-full" width="32" height="32" alt="" src={img} />
         <div className="flex flex-col">
           <figcaption className="text-sm font-medium dark:text-white">
             {name}
@@ -250,14 +249,31 @@ export const HomePage: React.FC = () => {
         }}
       />
       
-    <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
+    <Container>
+      <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
       <Marquee pauseOnHover className="[--duration:20s]">
-        {firstRow.map((review) => (
-          <ReviewCard key={review.username} {...review} />
+        {[
+          "/api/media/file/Logo-512.png",
+          "/api/media/file/StarmakersLogo512.png",
+          "/api/media/file/EeZee-512.png",
+          "/api/media/file/Azuri-White.png",
+        ].map((logo, index) => (
+          <div key={index} className="mx-8 flex h-16 w-auto items-center justify-center">
+            <Image 
+              src={logo} 
+              alt={`Client logo ${index + 1}`} 
+              width={120} 
+              height={60}
+              className="h-auto max-h-12 w-auto object-contain"
+            />
+          </div>
         ))}
       </Marquee>
       <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-background"></div>
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-background"></div>
     </div>
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-background"></div>
+    </Container>
       <SocialProofBar />
       <ProblemSolution />
       <section className="py-20 bg-gray-50 dark:bg-black">

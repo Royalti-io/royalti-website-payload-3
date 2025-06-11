@@ -101,6 +101,12 @@
     --secondary-yellow-light: 48 100% 70%; /* #ffe266 */
     --secondary-yellow-lighter: 48 100% 80%; /* #ffeb99 */
     --secondary-yellow-lightest: 48 100% 90%; /* #fff5cc */
+    
+    /* Animation variables for global availability */
+    --duration: 40s;
+    --animate-background-position-spin: background-position-spin 3000ms infinite alternate;
+    --animate-marquee: marquee var(--duration) infinite linear;
+    --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
   }
 
   [data-theme='dark'] {
@@ -151,8 +157,9 @@
     --royal-700: 180 100% 20%; /* #006666 */
     --royal-800: 166 100% 10%; /* #03321e */
     --royal-900: 210 11% 5%;
-  }
-  .theme {
+    
+    /* Animation variables for dark mode */
+    --duration: 40s;
     --animate-background-position-spin: background-position-spin 3000ms infinite alternate;
     --animate-marquee: marquee var(--duration) infinite linear;
     --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;

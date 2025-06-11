@@ -10,7 +10,8 @@ import { Glow } from "@/components/ui/glow";
 import Image from "next/image";
 import { useTheme } from "next-themes";
 import { cn } from "@/utilities/cn";
-
+import { Particles } from "@/components/magicui/particles";
+import { useEffect, useState } from "react";
 interface HeroAction {
   text: string;
   href: string;
@@ -45,6 +46,12 @@ export const HeroSection: FC<HeroProps> = ({
 }) => {
   const { resolvedTheme } = useTheme();
   const imageSrc = resolvedTheme === "light" ? image.light : image.dark;
+
+  const [color, setColor] = useState("#006666");
+
+useEffect(() => {
+  setColor(resolvedTheme === "dark" ? "#ffffff" : "#000000");
+}, [resolvedTheme]);
 
   return (
     <section
@@ -119,6 +126,13 @@ export const HeroSection: FC<HeroProps> = ({
               />
             </div>
           </div>
+          <Particles
+            className="absolute inset-0 z-0"
+            quantity={100}
+            ease={80}
+            color={color}
+            refresh
+          />
         </div>
       </div>
     </section>
